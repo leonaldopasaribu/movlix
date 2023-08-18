@@ -6,9 +6,9 @@ import { MovieViewModel } from '../view-models/movie.view-model';
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
 
 @Component({
-  templateUrl: './home.component.html',
+  templateUrl: './movie.component.html',
 })
-export class HomeComponent implements OnInit {
+export class MovieComponent implements OnInit {
   isLoading$: Observable<boolean>;
 
   nowPlayingMovies$: Observable<MovieEntity[]>;

@@ -5,8 +5,8 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./presentasions/home/modules/home.module').then(
-        ({ HomeModule }) => HomeModule,
+      import('./presentasions/movie/modules/movie.module').then(
+        ({ MovieModule }) => MovieModule,
       ),
   },
 ];

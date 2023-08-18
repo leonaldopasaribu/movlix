@@ -3,7 +3,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { forkJoin, map, Observable } from 'rxjs';
 
 import { MovieStore } from '../stores/movie.store';
-import { Movie } from '../models/home.model';
+import { Movie } from '../models/movie.model';
 
 import { MovieRepository } from 'src/app/core/repositories/movie.repositories';
 import { MovieType } from 'src/app/core/entities/movie-type.enum';

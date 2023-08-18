@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { HomeRoutingModule } from './home-routing.module';
+import { MovieRoutingModule } from './movie-routing.module';
 
 import { HeroComponent } from '../components/hero/hero.component';
-import { HomeComponent } from '../containers/home.component';
+import { MovieComponent } from '../containers/movie.component';
 import { MovieStore } from '../stores/movie.store';
 import { MovieViewModel } from '../view-models/movie.view-model';
 
@@ -18,10 +18,10 @@ import { MovieRepositoryTmdb } from 'src/app/data/movie/movie.repository.tmdb';
 import { MovieRepository } from 'src/app/core/repositories/movie.repositories';
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [MovieComponent],
   imports: [
     CommonModule,
-    HomeRoutingModule,
+    MovieRoutingModule,
     HeaderModule,
     CardListModule,
     HeroComponent,
@@ -34,4 +34,4 @@ import { MovieRepository } from 'src/app/core/repositories/movie.repositories';
     { provide: MovieRepository, useClass: MovieRepositoryTmdb },
   ],
 })
-export class HomeModule {}
+export class MovieModule {}
