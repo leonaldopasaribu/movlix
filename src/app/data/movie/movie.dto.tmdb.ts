@@ -1,6 +1,7 @@
 export interface MovieDtoTmdb {
   adult: boolean;
   backdrop_path: string;
+  genres: Genre[];
   genre_ids: number[];
   id: number;
   original_language: string;
@@ -13,4 +14,9 @@ export interface MovieDtoTmdb {
   video: boolean;
   vote_average: number;
   vote_count: number;
+}
+
+interface Genre {
+  id: number;
+  name: string;
 }
