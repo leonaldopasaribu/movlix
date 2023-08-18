@@ -27,20 +27,4 @@ export class MovieStore extends Store<MovieState> {
   }): void {
     this.setState({ isLoading: false, ...movies });
   }
-
-  populateNowPlayingMovies(nowPlayingMovies: MovieEntity[]): void {
-    this.setState({ ...this.state, nowPlayingMovies, isLoading: false });
-  }
-
-  populatePopularMovies(popularMovies: MovieEntity[]): void {
-    this.setState({ ...this.state, popularMovies, isLoading: false });
-  }
-
-  populateTopRatedMovies(topRatedMovies: MovieEntity[]): void {
-    this.setState({ ...this.state, topRatedMovies, isLoading: false });
-  }
-
-  populateUpComingMovies(upComingMovies: MovieEntity[]): void {
-    this.setState({ ...this.state, upComingMovies, isLoading: false });
-  }
 }
