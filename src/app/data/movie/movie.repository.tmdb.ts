@@ -32,7 +32,6 @@ export class MovieRepositoryTmdb extends MovieRepository {
 
   override fetchAll(type: MovieType): Observable<MovieEntity[]> {
     const header = AUTHORIZATION_HEADER;
-
     const url = `${this.baseUrl}/${this.apiVersion}/movie/${type}`;
 
     return this.http
