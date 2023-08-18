@@ -13,6 +13,7 @@ export class MovieMapperTmdb
   toEntity(dto: MovieDtoTmdb): MovieEntity {
     return {
       backdropUrl: dto.backdrop_path,
+      duration: dto.runtime,
       genre: dto.genres,
       id: dto.id,
       isAdult: dto.adult,
