@@ -59,15 +59,38 @@ export class MovieViewModel {
     });
   }
 
+  fetchMovieDetails(movieId: number): void {
+    this.activateLoading();
+
+    this.movieRepository.fetchOneById(movieId).subscribe({
+      next: value => {
+        this.handleSuccessFetchMovieDetails(value);
+      },
+      error: (error: HttpErrorResponse) => {
+        this.handleErrorFetchMovieDetails(error);
+      },
+    });
+  }
+
   private activateLoading(): void {
     this.store.markAsLoading();
   }
 
-  private handleSuccessFetchMovies(values: Movie): void {
-    this.store.populateMovies(values);
+  private handleSuccessFetchMovies(movies: Movie): void {
+    this.store.populateMovies(movies);
   }
 
   private handleErrorFetchMovies(error: HttpErrorResponse): void {
+    const { message } = error;
+
+    this.store.markAsError(message);
+  }
+
+  private handleSuccessFetchMovieDetails(movie: MovieEntity): void {
+    this.store.saveMovieDetails(movie);
+  }
+
+  private handleErrorFetchMovieDetails(error: HttpErrorResponse): void {
     const { message } = error;
 
     this.store.markAsError(message);

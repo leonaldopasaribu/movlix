@@ -27,4 +27,8 @@ export class MovieStore extends Store<MovieState> {
   }): void {
     this.setState({ isLoading: false, ...movies });
   }
+
+  saveMovieDetails(movie: MovieEntity): void {
+    this.setState({ isLoading: false, ...movie });
+  }
 }
