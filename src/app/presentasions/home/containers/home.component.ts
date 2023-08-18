@@ -26,6 +26,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.viewModel.onFetchMovies();
+    this.viewModel.fetchMovies();
   }
 }

@@ -36,7 +36,7 @@ export class MovieViewModel {
     return this.store.state$.pipe(map(state => state.upComingMovies));
   }
 
-  onFetchMovies(): void {
+  fetchMovies(): void {
     const nowPlayingMovieType = MovieType.NowPlaying;
     const popularMovieType = MovieType.Popular;
     const topRatedMovieType = MovieType.TopRated;
