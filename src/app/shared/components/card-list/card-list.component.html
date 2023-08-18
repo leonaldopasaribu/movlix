@@ -1,0 +1,8 @@
+<div class="w-full">
+  <div
+    *ngFor="let content of contents; trackBy: trackByIndex"
+    class="grid grid-cols-6 gap-6"
+  >
+    <app-card [rating]="content.rating" [title]="content.title"></app-card>
+  </div>
+</div>
