@@ -1,4 +1,6 @@
-<div class="bg-[#20283E] max-w-fit px-3 pt-3 pb-6 rounded-xl">
+<div
+  class="bg-[#20283E] max-w-fit px-3 pt-3 pb-6 rounded-xl relative w-64 h-[calc(100%-10px)]"
+>
   <div>
     <div
       class="mt-1 ml-1 rounded-lg p-2 text-[#FFAD49] text-sm flex gap-1 absolute bg-black"
@@ -6,7 +8,10 @@
       <img src="assets/icons/star.svg" alt="Star Icon" />
       <p>{{ rating }}</p>
     </div>
-    <img src="assets/images/black-widow-poster.png" alt="Movie Poster" />
+    <img
+      src="https://image.tmdb.org/t/p/w342{{ posterUrl }}"
+      alt="Movie Poster"
+    />
   </div>
   <p class="pt-6 text-base text-white font-semibold">{{ title }}</p>
 </div>

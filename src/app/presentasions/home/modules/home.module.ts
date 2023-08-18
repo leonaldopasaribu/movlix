@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { HomeRoutingModule } from './home-routing.module';
@@ -13,10 +14,17 @@ import { MovieMapperTmdb } from 'src/app/data/movie/movie.mapper.tmdb';
 import { MovieRepositoryTmdb } from 'src/app/data/movie/movie.repository.tmdb';
 
 import { MovieRepository } from 'src/app/core/repositories/movie.repositories';
+import { HeroComponent } from '../components/hero/hero.component';
 
 @NgModule({
   declarations: [HomeComponent],
-  imports: [HomeRoutingModule, HeaderModule, CardListModule],
+  imports: [
+    CommonModule,
+    HomeRoutingModule,
+    HeaderModule,
+    CardListModule,
+    HeroComponent,
+  ],
   providers: [
     MovieStore,
     MovieViewModel,

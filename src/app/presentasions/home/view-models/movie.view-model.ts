@@ -16,24 +16,24 @@ export class MovieViewModel {
     private movieRepository: MovieRepository,
   ) {}
 
-  get isLoading(): Observable<boolean> {
+  get isLoading$(): Observable<boolean> {
     return this.store.state$.pipe(map(state => state.isLoading));
   }
 
-  get nowPlayingMovies(): Observable<MovieEntity[]> {
+  get nowPlayingMovies$(): Observable<MovieEntity[]> {
+    return this.store.state$.pipe(map(state => state.nowPlayingMovies));
+  }
+
+  get popularMovies$(): Observable<MovieEntity[]> {
+    return this.store.state$.pipe(map(state => state.popularMovies));
+  }
+
+  get topRatedMovies$(): Observable<MovieEntity[]> {
     return this.store.state$.pipe(map(state => state.topRatedMovies));
   }
 
-  get popularMovies(): Observable<MovieEntity[]> {
-    return this.store.state$.pipe(map(state => state.topRatedMovies));
-  }
-
-  get topRatedMovies(): Observable<MovieEntity[]> {
-    return this.store.state$.pipe(map(state => state.topRatedMovies));
-  }
-
-  get upComingMovies(): Observable<MovieEntity[]> {
-    return this.store.state$.pipe(map(state => state.topRatedMovies));
+  get upComingMovies$(): Observable<MovieEntity[]> {
+    return this.store.state$.pipe(map(state => state.upComingMovies));
   }
 
   onFetchMovies(): void {
