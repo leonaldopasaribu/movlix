@@ -1,13 +1,11 @@
-<ng-container *ngIf="isLoading$ | async; else elseTemplate">
-  <app-loading-screen>
-    <p class="FontWeight-semibold">Loading books ...</p>
-  </app-loading-screen>
+<ng-container *ngIf="isLoading$ | async; else loadedTemplate">
+  <app-loading-screen></app-loading-screen>
 </ng-container>
 
-<ng-template #elseTemplate>
+<ng-template #loadedTemplate>
   <app-header></app-header>
 
-  <div class="px-14">
+  <div class="px-14 pb-14">
     <app-hero></app-hero>
 
     <div class="mt-20">

@@ -2,9 +2,11 @@
   <div class="grid grid-cols-8 gap-6 overflow-x-auto">
     <div *ngFor="let content of contents; trackBy: trackByIndex">
       <app-card
+        [id]="content.id"
         [rating]="content.rating"
         [posterUrl]="content.posterUrl"
         [title]="content.title"
+        (clicked)="onCardClick(content.id)"
       ></app-card>
     </div>
   </div>

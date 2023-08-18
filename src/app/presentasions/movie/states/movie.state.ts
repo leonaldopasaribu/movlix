@@ -8,16 +8,4 @@ export class MovieState {
   popularMovies: MovieEntity[] = [];
   topRatedMovies: MovieEntity[] = [];
   upComingMovies: MovieEntity[] = [];
-  movie: MovieEntity = {
-    backdropUrl: '',
-    duration: 0,
-    genre: [],
-    id: 0,
-    isAdult: false,
-    overview: '',
-    posterUrl: '',
-    rating: 0,
-    releaseDate: '',
-    title: '',
-  };
 }

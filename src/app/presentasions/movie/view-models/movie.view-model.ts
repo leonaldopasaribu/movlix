@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { forkJoin, map, Observable } from 'rxjs';
 
 import { MovieStore } from '../stores/movie.store';
@@ -8,12 +9,14 @@ import { Movie } from '../models/movie.model';
 import { MovieRepository } from 'src/app/core/repositories/movie.repositories';
 import { MovieType } from 'src/app/core/entities/movie-type.enum';
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
+import { MOVIE_URL } from 'src/app/shared/const/route-url.const';
 
 @Injectable()
 export class MovieViewModel {
   constructor(
     private store: MovieStore,
     private movieRepository: MovieRepository,
+    private router: Router,
   ) {}
 
   get isLoading$(): Observable<boolean> {
@@ -59,17 +62,8 @@ export class MovieViewModel {
     });
   }
 
-  fetchMovieDetails(movieId: number): void {
-    this.activateLoading();
-
-    this.movieRepository.fetchOneById(movieId).subscribe({
-      next: value => {
-        this.handleSuccessFetchMovieDetails(value);
-      },
-      error: (error: HttpErrorResponse) => {
-        this.handleErrorFetchMovieDetails(error);
-      },
-    });
+  redirectToMovieDetails(movieId: number): void {
+    this.router.navigateByUrl(`${MOVIE_URL}/${movieId.toString()}`);
   }
 
   private activateLoading(): void {
@@ -81,16 +75,6 @@ export class MovieViewModel {
   }
 
   private handleErrorFetchMovies(error: HttpErrorResponse): void {
-    const { message } = error;
-
-    this.store.markAsError(message);
-  }
-
-  private handleSuccessFetchMovieDetails(movie: MovieEntity): void {
-    this.store.saveMovieDetails(movie);
-  }
-
-  private handleErrorFetchMovieDetails(error: HttpErrorResponse): void {
     const { message } = error;
 
     this.store.markAsError(message);

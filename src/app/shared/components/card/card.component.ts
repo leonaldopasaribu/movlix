@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -14,9 +14,18 @@ export class CardComponent {
   @Input()
   title: string;
 
+  @Output()
+  clicked: EventEmitter<void>;
+
   constructor() {
     this.rating = 0;
     this.posterUrl = '';
     this.title = '';
+
+    this.clicked = new EventEmitter();
+  }
+
+  onCardClick(): void {
+    this.clicked.emit();
   }
 }
