@@ -4,5 +4,8 @@ export class MovieState {
   isLoading = false;
   isError = false;
   errorMessage = '';
-  movies: MovieEntity[] = [];
+  nowPlayingMovies: MovieEntity[] = [];
+  popularMovies: MovieEntity[] = [];
+  topRatedMovies: MovieEntity[] = [];
+  upComingMovies: MovieEntity[] = [];
 }

@@ -1,6 +1,6 @@
 export enum MovieType {
-  NOW_PLAYING = 'now_playing',
-  POPULAR = 'popular',
-  TOP_RATED = 'top_rated',
-  UPCOMING = 'upcoming',
+  NowPlaying = 'now_playing',
+  Popular = 'popular',
+  TopRated = 'top_rated',
+  UpComing = 'upcoming',
 }
