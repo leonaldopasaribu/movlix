@@ -26,10 +26,14 @@ export class MovieComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.viewModel.fetchMovies();
+    this.loadInitialData();
   }
 
   onCardClick(movieId: number): void {
     this.viewModel.redirectToMovieDetails(movieId);
+  }
+
+  private loadInitialData(): void {
+    this.viewModel.fetchMovies();
   }
 }

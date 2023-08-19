@@ -22,12 +22,16 @@ import { MovieRepositoryTmdb } from 'src/app/data/movie/movie.repository.tmdb';
 import { MovieRepository } from 'src/app/core/repositories/movie.repositories';
 
 @NgModule({
-  declarations: [MovieComponent, CardListComponent, MovieDetailComponent],
+  declarations: [
+    MovieComponent,
+    HeroComponent,
+    CardListComponent,
+    MovieDetailComponent,
+  ],
   imports: [
     CommonModule,
     MovieRoutingModule,
     HeaderModule,
-    HeroComponent,
     CardModule,
     LoadingScreenModule,
   ],
