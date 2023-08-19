@@ -4,13 +4,19 @@
   aria-hidden="true"
   (click)="onCardClick()"
 >
-  <div>
+  <div class="relative">
     <div
       *ngIf="hasRating"
       class="mt-1 ml-1 rounded-lg p-2 text-[#FFAD49] text-sm flex gap-1 absolute bg-black"
     >
       <img src="assets/icons/star.svg" alt="Star Icon" />
       <p>{{ rating }}</p>
+    </div>
+    <div
+      *ngIf="hasFavorite"
+      class="mt-1 mr-1 rounded-lg p-2.5 text-[#FFAD49] text-sm flex gap-1 absolute right-0 bg-black"
+    >
+      <img src="assets/icons/love.svg" class="w-4 h-4" alt="Love Icon" />
     </div>
     <img
       src="https://image.tmdb.org/t/p/w342{{ imageUrl }}"

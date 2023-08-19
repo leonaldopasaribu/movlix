@@ -9,6 +9,9 @@ export class CardComponent {
   hasRating: boolean;
 
   @Input()
+  hasFavorite: boolean;
+
+  @Input()
   rating: number;
 
   @Input()
@@ -22,6 +25,7 @@ export class CardComponent {
 
   constructor() {
     this.hasRating = false;
+    this.hasFavorite = false;
     this.rating = 0;
     this.imageUrl = '';
     this.title = '';
