@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 
 import { MovieState } from '../states/movie.state';
 
-import { Store } from 'src/app/shared/base/store';
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
+
+import { Store } from 'src/app/shared/base/store';
 
 @Injectable()
 export class MovieStore extends Store<MovieState> {
@@ -26,5 +27,13 @@ export class MovieStore extends Store<MovieState> {
     upComingMovies: MovieEntity[];
   }): void {
     this.setState({ isLoading: false, ...movies });
+  }
+
+  openSuccessFavoriteDialog(): void {
+    this.setState({ isShowSuccessFavoriteDialog: true });
+  }
+
+  closeSuccessFavoriteDialog(): void {
+    this.setState({ isShowSuccessFavoriteDialog: false });
   }
 }

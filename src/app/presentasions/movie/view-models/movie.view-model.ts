@@ -23,6 +23,12 @@ export class MovieViewModel {
     return this.store.state$.pipe(map(state => state.isLoading));
   }
 
+  get isShowSuccessFavoriteDialog$(): Observable<boolean> {
+    return this.store.state$.pipe(
+      map(state => state.isShowSuccessFavoriteDialog),
+    );
+  }
+
   get nowPlayingMovies$(): Observable<MovieEntity[]> {
     return this.store.state$.pipe(map(state => state.nowPlayingMovies));
   }
@@ -64,6 +70,10 @@ export class MovieViewModel {
 
   redirectToMovieDetails(movieId: number): void {
     this.router.navigateByUrl(`${MOVIE_URL}/${movieId.toString()}`);
+  }
+
+  onClickCloseSuccessFavoriteDialog(): void {
+    this.store.closeSuccessFavoriteDialog();
   }
 
   private activateLoading(): void {

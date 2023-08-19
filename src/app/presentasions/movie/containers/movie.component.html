@@ -45,5 +45,7 @@
     </div>
   </div>
 
-  <app-success-favorite-dialog *ngIf="true"></app-success-favorite-dialog>
+  <app-success-favorite-dialog
+    *ngIf="isShowSuccessFavoriteDialog$ | async"
+  ></app-success-favorite-dialog>
 </ng-template>

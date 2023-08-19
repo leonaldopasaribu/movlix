@@ -10,6 +10,7 @@ import { MovieEntity } from 'src/app/core/entities/movie.entity';
 })
 export class MovieComponent implements OnInit {
   isLoading$: Observable<boolean>;
+  isShowSuccessFavoriteDialog$: Observable<boolean>;
 
   nowPlayingMovies$: Observable<MovieEntity[]>;
   popularMovies$: Observable<MovieEntity[]>;
@@ -18,6 +19,8 @@ export class MovieComponent implements OnInit {
 
   constructor(private viewModel: MovieViewModel) {
     this.isLoading$ = this.viewModel.isLoading$;
+    this.isShowSuccessFavoriteDialog$ =
+      this.viewModel.isShowSuccessFavoriteDialog$;
 
     this.nowPlayingMovies$ = this.viewModel.nowPlayingMovies$;
     this.popularMovies$ = this.viewModel.popularMovies$;
