@@ -4,16 +4,46 @@
 
 <ng-template #loadedTemplate>
   <app-header></app-header>
+
   <div class="px-14 pb-10">
-    <div class="w-full flex justify-center mt-10">
+    <div
+      class="mt-6 text-gray-400 flex items-center gap-3 cursor-pointer"
+      aria-hidden="true"
+      (click)="onButtonBackClick()"
+    >
       <img
-        src="https://image.tmdb.org/t/p/w342{{ (movie$ | async)?.backdropUrl }}"
-        class="w-[600px] rounded-2xl"
-        alt="Movie Image"
+        src="assets/icons/arrow-right.svg"
+        class="rotate-180 w-6 h-6"
+        alt="Back Icon"
       />
+      <p>Back</p>
     </div>
 
-    <div class="mt-20 flex flex-col gap-8 my-0 mx-auto xl:flex-row xl:px-72">
+    <div class="relative w-full flex justify-center mt-10">
+      <div class="w-[1200px]">
+        <img
+          src="https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/{{
+            (movie$ | async)?.backdropUrl
+          }}"
+          class="w-full rounded-3xl"
+          alt="Movie Image"
+        />
+      </div>
+    </div>
+
+    <div class="relative">
+      <div
+        class="bg-[#20283E] w-full rounded-3xl p-6 absolute translate-y-[-50%] opacity-90 lg:w-96 lg:p-10 xl:mx-80"
+      >
+        <h2 class="text-white font-bold text-lg lg:text-4xl">
+          {{ (movie$ | async)?.title }}
+        </h2>
+      </div>
+    </div>
+
+    <div
+      class="mt-24 flex flex-col gap-8 my-0 mx-auto xl:flex-row lg:mt-32 xl:px-72"
+    >
       <div>
         <img
           src="https://image.tmdb.org/t/p/w342{{ (movie$ | async)?.posterUrl }}"
@@ -23,7 +53,9 @@
       </div>
 
       <div class="w-full">
-        <p class="text-gray-200">
+        <h2 class="text-2xl text-white uppercase font-bold">The Synopsis</h2>
+
+        <p class="text-gray-200 pt-3">
           {{ (movie$ | async)?.overview }}
         </p>
 

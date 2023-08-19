@@ -5,13 +5,14 @@
 >
   <div>
     <div
+      *ngIf="hasRating"
       class="mt-1 ml-1 rounded-lg p-2 text-[#FFAD49] text-sm flex gap-1 absolute bg-black"
     >
       <img src="assets/icons/star.svg" alt="Star Icon" />
       <p>{{ rating }}</p>
     </div>
     <img
-      src="https://image.tmdb.org/t/p/w342{{ posterUrl }}"
+      src="https://image.tmdb.org/t/p/w342{{ imageUrl }}"
       alt="Movie Poster"
     />
   </div>

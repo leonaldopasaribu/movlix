@@ -1,10 +1,11 @@
 <div class="w-full">
-  <div class="grid grid-cols-8 gap-6 overflow-x-auto">
+  <div class="flex gap-6 overflow-x-auto lg:grid lg:grid-cols-8">
     <div *ngFor="let content of contents; trackBy: trackByIndex">
       <app-card
         [id]="content.id"
+        [imageUrl]="content.posterUrl"
+        [hasRating]="true"
         [rating]="content.rating"
-        [posterUrl]="content.posterUrl"
         [title]="content.title"
         (clicked)="onCardClick(content.id)"
       ></app-card>

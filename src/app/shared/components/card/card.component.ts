@@ -6,10 +6,13 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class CardComponent {
   @Input()
+  hasRating: boolean;
+
+  @Input()
   rating: number;
 
   @Input()
-  posterUrl: string;
+  imageUrl: string;
 
   @Input()
   title: string;
@@ -18,8 +21,9 @@ export class CardComponent {
   clicked: EventEmitter<void>;
 
   constructor() {
+    this.hasRating = false;
     this.rating = 0;
-    this.posterUrl = '';
+    this.imageUrl = '';
     this.title = '';
 
     this.clicked = new EventEmitter();

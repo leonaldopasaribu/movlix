@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { MOVIE_URL } from '../../const/route-url.const';
-
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
+
+import { MOVIE_URL } from 'src/app/shared/const/route-url.const';
 
 @Component({
   selector: 'app-card-list',

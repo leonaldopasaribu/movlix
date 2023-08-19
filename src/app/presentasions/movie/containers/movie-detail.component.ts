@@ -32,6 +32,10 @@ export class MovieDetailComponent implements OnInit {
     return index;
   }
 
+  onButtonBackClick(): void {
+    this.viewModel.onClickBackToPreviousPage();
+  }
+
   private loadInitialData(): void {
     const movieId = this.activatedRoute.snapshot.paramMap.get(
       MOVIE_ID_QUERY_PARAM_NAME,

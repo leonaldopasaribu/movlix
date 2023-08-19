@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Location } from '@angular/common';
 import { distinctUntilChanged, map, Observable } from 'rxjs';
 
 import { MovieDetailStore } from '../stores/movie-detail.store';
@@ -13,6 +14,7 @@ export class MovieDetailViewModel {
   constructor(
     private store: MovieDetailStore,
     private movieRepository: MovieRepository,
+    private location: Location,
   ) {}
 
   get isLoading$(): Observable<boolean> {
@@ -37,6 +39,10 @@ export class MovieDetailViewModel {
         this.handleErrorFetchMovieDetails(error);
       },
     });
+  }
+
+  onClickBackToPreviousPage(): void {
+    this.location.back();
   }
 
   private activateLoading(): void {
