@@ -23,6 +23,9 @@ export class CardComponent {
   @Output()
   clicked: EventEmitter<void>;
 
+  @Output()
+  favoriteClicked: EventEmitter<void>;
+
   constructor() {
     this.hasRating = false;
     this.hasFavorite = false;
@@ -31,9 +34,14 @@ export class CardComponent {
     this.title = '';
 
     this.clicked = new EventEmitter();
+    this.favoriteClicked = new EventEmitter();
   }
 
   onCardClick(): void {
     this.clicked.emit();
+  }
+
+  onFavoriteIconClick(): void {
+    this.favoriteClicked.emit();
   }
 }
