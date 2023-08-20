@@ -137,7 +137,7 @@ describe('MovieStore', () => {
     });
   });
 
-  it('should set nowPlayingMovies, popularMovies, topRatedMovies, upComingMovies, when populateMovies is called', () => {
+  it('should set nowPlayingMovies, popularMovies, topRatedMovies, and upComingMovies when populateMovies is called', () => {
     store.populateMovies(moviesStub);
 
     store.state$.subscribe({
