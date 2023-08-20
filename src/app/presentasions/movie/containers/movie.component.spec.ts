@@ -12,6 +12,8 @@ import { MovieViewModel } from '../view-models/movie.view-model';
 import { LoadingScreenModule } from 'src/app/shared/components/loading-screen';
 import { HeaderModule } from 'src/app/shared/components/header';
 
+import { MovieEntity } from 'src/app/core/entities/movie.entity';
+
 describe('MovieComponent', () => {
   let component: MovieComponent;
   let fixture: ComponentFixture<MovieComponent>;
@@ -21,6 +23,8 @@ describe('MovieComponent', () => {
   const movieViewModelSpy = jasmine.createSpyObj('MovieViewModel', [
     'fetchMovies',
     'redirectToMovieDetails',
+    'addFavoriteMovie',
+    'onClickCloseSuccessFavoriteDialog',
   ]);
 
   beforeEach(async () => {
@@ -85,5 +89,34 @@ describe('MovieComponent', () => {
     component.onCardClick(movieIdStub);
 
     expect(redirectToMovieDetailsSpy).toHaveBeenCalled();
+  });
+
+  it('should call addFavoriteMovie method when onIconLoveClick with movie mock is called', () => {
+    const movieMock: MovieEntity = {
+      backdropUrl: 'Test Backdrop Url',
+      duration: 120,
+      genre: [{ id: 1, name: 'Comedy' }],
+      id: 1,
+      isAdult: false,
+      overview: 'Test Overview',
+      posterUrl: 'Test Poster Url',
+      rating: 8,
+      releaseDate: '2023-10-12',
+      title: 'Test Title',
+    };
+    const addFavoriteMovieSpy = movieViewModel.addFavoriteMovie as jasmine.Spy;
+
+    component.onIconLoveClick(movieMock);
+
+    expect(addFavoriteMovieSpy).toHaveBeenCalled();
+  });
+
+  it('should call onClickCloseSuccessFavoriteDialog method with movie id 1 when onCloseSuccessFavoriteDialogClick method is called', () => {
+    const onClickCloseSuccessFavoriteDialogSpy =
+      movieViewModel.onClickCloseSuccessFavoriteDialog as jasmine.Spy;
+
+    component.onCloseSuccessFavoriteDialogClick();
+
+    expect(onClickCloseSuccessFavoriteDialogSpy).toHaveBeenCalled();
   });
 });
