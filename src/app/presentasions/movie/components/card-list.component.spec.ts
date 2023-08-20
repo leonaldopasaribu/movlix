@@ -8,6 +8,8 @@ import { HeaderModule } from 'src/app/shared/components/header';
 
 import { MOVIE_URL } from 'src/app/shared/const/route-url.const';
 
+import { MovieEntity } from 'src/app/core/entities/movie.entity';
+
 describe('CardListComponent', () => {
   let component: CardListComponent;
   let fixture: ComponentFixture<CardListComponent>;
@@ -44,6 +46,27 @@ describe('CardListComponent', () => {
     const result = component.trackByIndex(1);
 
     expect(result).toEqual(stubArgument);
+  });
+
+  it('should emit favoriteClicked event when onFavoriteIconClick with movie stub is called', () => {
+    const movieStub: MovieEntity = {
+      backdropUrl: 'Test Backdrop Url',
+      duration: 120,
+      genre: [{ id: 1, name: 'Comedy' }],
+      id: 1,
+      isAdult: false,
+      overview: 'Test Overview',
+      posterUrl: 'Test Poster Url',
+      rating: 8,
+      releaseDate: '2023-10-12',
+      title: 'Test Title',
+    };
+
+    spyOn(component.favoriteClicked, 'emit');
+
+    component.onFavoriteIconClick(movieStub);
+
+    expect(component.favoriteClicked.emit).toHaveBeenCalled();
   });
 
   it('should call navigateByUrl with "movie/1" when onCardClick method is called', () => {

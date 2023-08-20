@@ -26,16 +26,16 @@ export class CardListComponent {
     this.favoriteClicked = new EventEmitter();
   }
 
-  onFavoriteIconClick(movie: MovieEntity): void {
-    this.favoriteClicked.emit(movie);
-  }
-
   trackByIndex(index: number): number {
     return index;
   }
 
   onCardClick(movieId: number): void {
     this.redirectToMovieDetails(movieId);
+  }
+
+  onFavoriteIconClick(movie: MovieEntity): void {
+    this.favoriteClicked.emit(movie);
   }
 
   private redirectToMovieDetails(movieId: number): void {
