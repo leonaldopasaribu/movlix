@@ -25,15 +25,29 @@ describe('CardComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should emit clicked event when card is clicked', () => {
+  it('should emit clicked event when image card is clicked', () => {
     spyOn(component.clicked, 'emit');
 
     fixture.detectChanges();
 
-    const containerCard = debugElement.query(By.css('#ImgPoster'));
+    const containerCard = debugElement.query(By.css('#CntrImageCard'));
 
     containerCard.triggerEventHandler('click', null);
 
     expect(component.clicked.emit).toHaveBeenCalled();
+  });
+
+  it('should emit favoriteClicked event when icon favorite is clicked', () => {
+    spyOn(component.favoriteClicked, 'emit');
+
+    component.hasFavorite = true;
+
+    fixture.detectChanges();
+
+    const containerCard = debugElement.query(By.css('#CntrFavoriteIcon'));
+
+    containerCard.triggerEventHandler('click', null);
+
+    expect(component.favoriteClicked.emit).toHaveBeenCalled();
   });
 });
