@@ -1,5 +1,5 @@
 <div
-  class="bg-[#20283E] max-w-fit px-3 pt-3 pb-6 rounded-xl relative w-64 h-[calc(100%-10px)] cursor-pointer"
+  class="bg-[#20283E] max-w-fit px-3 pt-3 pb-6 rounded-xl relative w-64 h-[calc(100%-10px)]"
 >
   <div class="relative">
     <div
@@ -11,14 +11,19 @@
     </div>
     <div
       *ngIf="hasFavorite"
-      class="mt-1 mr-1 rounded-lg p-2.5 text-[#FFAD49] text-sm flex gap-1 absolute right-0 bg-black"
+      class="mt-1 mr-1 rounded-lg p-2.5 text-[#FFAD49] text-sm flex gap-1 absolute right-0 bg-black cursor-pointer"
       aria-hidden="true"
       (click)="onFavoriteIconClick()"
     >
       <img src="assets/icons/love.svg" class="w-4 h-4" alt="Love Icon" />
     </div>
 
-    <div id="ImgPoster" aria-hidden="true" (click)="onCardClick()">
+    <div
+      class="cursor-pointer"
+      id="ImgPoster"
+      aria-hidden="true"
+      (click)="onCardClick()"
+    >
       <img
         src="https://image.tmdb.org/t/p/w342{{ imageUrl }}"
         alt="Movie Poster"

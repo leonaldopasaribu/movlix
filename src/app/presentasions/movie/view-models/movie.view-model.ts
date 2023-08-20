@@ -104,11 +104,18 @@ export class MovieViewModel {
   private saveFavoriteMovieToLocalStorage(movie: MovieEntity): void {
     const localStorageFavoriteMoviesKey = LOCAL_STORAGE_FAVORITE_MOVIES_KEY;
     const existingFavoriteMovies = this.getFavoriteMoviesFromLocalStorage();
-    const combinedFavoriteMovies = [...(existingFavoriteMovies ?? []), movie];
+    const isNewFavoriteMovieExist = existingFavoriteMovies?.some(
+      item => item.id === movie.id,
+    );
+    const favoriteMovies = this.combineFavoriteMoviesFromLocalStorage(movie);
+
+    if (isNewFavoriteMovieExist) {
+      return;
+    }
 
     this.localStorageService.setItem<MovieEntity[]>(
       localStorageFavoriteMoviesKey,
-      combinedFavoriteMovies,
+      favoriteMovies,
     );
   }
 
@@ -118,6 +125,15 @@ export class MovieViewModel {
     return this.localStorageService.getItem<MovieEntity[]>(
       localStorageFavoriteMoviesKey,
     );
+  }
+
+  private combineFavoriteMoviesFromLocalStorage(
+    movie: MovieEntity,
+  ): MovieEntity[] {
+    const existingFavoriteMovies = this.getFavoriteMoviesFromLocalStorage();
+    const combinedFavoriteMovies = [...(existingFavoriteMovies ?? []), movie];
+
+    return combinedFavoriteMovies;
   }
 
   private openSuccessFavoriteDialog(): void {
