@@ -7,12 +7,14 @@ import { HeroComponent } from '../components/hero.component';
 import { MovieComponent } from '../containers/movie.component';
 import { CardListComponent } from '../components/card-list.component';
 import { SuccessFavoriteDialogComponent } from '../components/success-favorite-dialog.component';
-
 import { MovieDetailComponent } from '../containers/movie-detail.component';
+import { MovieFavoriteComponent } from '../containers/movie-favorite.component';
 import { MovieStore } from '../stores/movie.store';
 import { MovieDetailStore } from '../stores/movie-detail.store';
+import { MovieFavoriteStore } from '../stores/movie-favorite.store';
 import { MovieViewModel } from '../view-models/movie.view-model';
 import { MovieDetailViewModel } from './../view-models/movie-detail.view-model';
+import { MovieFavoriteViewModel } from '../view-models/movie-favorite.view-model';
 
 import { HeaderModule } from 'src/app/shared/components/header';
 import { LoadingScreenModule } from 'src/app/shared/components/loading-screen';
@@ -31,6 +33,7 @@ import { MovieRepository } from 'src/app/core/repositories/movie.repositories';
     CardListComponent,
     MovieDetailComponent,
     SuccessFavoriteDialogComponent,
+    MovieFavoriteComponent,
   ],
   imports: [
     CommonModule,
@@ -43,8 +46,10 @@ import { MovieRepository } from 'src/app/core/repositories/movie.repositories';
   providers: [
     MovieStore,
     MovieDetailStore,
+    MovieFavoriteStore,
     MovieViewModel,
     MovieDetailViewModel,
+    MovieFavoriteViewModel,
     MovieMapperTmdb,
     { provide: MovieRepository, useClass: MovieRepositoryTmdb },
   ],

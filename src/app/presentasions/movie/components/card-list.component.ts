@@ -13,11 +13,15 @@ export class CardListComponent {
   @Input()
   contents: MovieEntity[];
 
+  @Input()
+  hasIconLove: boolean;
+
   @Output()
   favoriteClicked: EventEmitter<MovieEntity>;
 
   constructor(private router: Router) {
     this.contents = [];
+    this.hasIconLove = false;
 
     this.favoriteClicked = new EventEmitter();
   }

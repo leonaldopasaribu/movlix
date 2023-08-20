@@ -5,7 +5,7 @@
         [id]="content.id"
         [imageUrl]="content.posterUrl"
         [hasRating]="true"
-        [hasFavorite]="true"
+        [hasFavorite]="hasIconLove"
         [rating]="content.rating"
         [title]="content.title"
         (clicked)="onCardClick(content.id)"

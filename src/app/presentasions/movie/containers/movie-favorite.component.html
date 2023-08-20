@@ -1,0 +1,15 @@
+<ng-container *ngIf="isLoading$ | async; else loadedTemplate">
+  <app-loading-screen></app-loading-screen>
+</ng-container>
+
+<ng-template #loadedTemplate>
+  <app-header></app-header>
+
+  <div class="px-14 pb-14">
+    <h1 class="text-4xl text-gray-200 font-bold">Favorite Movies</h1>
+
+    <div class="mt-6">
+      <app-card-list [contents]="(favoriteMovies$ | async)!"></app-card-list>
+    </div>
+  </div>
+</ng-template>
