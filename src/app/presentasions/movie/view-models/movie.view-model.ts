@@ -9,7 +9,11 @@ import { Movie } from '../models/movie.model';
 import { MovieRepository } from 'src/app/core/repositories/movie.repositories';
 import { MovieType } from 'src/app/core/entities/movie-type.enum';
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
+
 import { MOVIE_URL } from 'src/app/shared/const/route-url.const';
+
+import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
+import { LOCAL_STORAGE_FAVORITE_MOVIES_KEY } from 'src/app/shared/const/local-storage-key.const';
 
 @Injectable()
 export class MovieViewModel {
@@ -17,6 +21,7 @@ export class MovieViewModel {
     private store: MovieStore,
     private movieRepository: MovieRepository,
     private router: Router,
+    private localStorageService: LocalStorageService,
   ) {}
 
   get isLoading$(): Observable<boolean> {
@@ -76,6 +81,12 @@ export class MovieViewModel {
     this.store.closeSuccessFavoriteDialog();
   }
 
+  addFavoriteMovie(movie: MovieEntity): void {
+    this.saveFavoriteMovieToLocalStorage(movie);
+
+    this.openSuccessFavoriteDialog();
+  }
+
   private activateLoading(): void {
     this.store.markAsLoading();
   }
@@ -88,5 +99,28 @@ export class MovieViewModel {
     const { message } = error;
 
     this.store.markAsError(message);
+  }
+
+  private saveFavoriteMovieToLocalStorage(movie: MovieEntity): void {
+    const localStorageFavoriteMoviesKey = LOCAL_STORAGE_FAVORITE_MOVIES_KEY;
+    const existingFavoriteMovies = this.getFavoriteMoviesFromLocalStorage();
+    const combinedFavoriteMovies = [...(existingFavoriteMovies ?? []), movie];
+
+    this.localStorageService.setItem<MovieEntity[]>(
+      localStorageFavoriteMoviesKey,
+      combinedFavoriteMovies,
+    );
+  }
+
+  private getFavoriteMoviesFromLocalStorage(): MovieEntity[] | null {
+    const localStorageFavoriteMoviesKey = LOCAL_STORAGE_FAVORITE_MOVIES_KEY;
+
+    return this.localStorageService.getItem<MovieEntity[]>(
+      localStorageFavoriteMoviesKey,
+    );
+  }
+
+  private openSuccessFavoriteDialog(): void {
+    this.store.openSuccessFavoriteDialog();
   }
 }

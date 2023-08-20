@@ -36,6 +36,14 @@ export class MovieComponent implements OnInit {
     this.viewModel.redirectToMovieDetails(movieId);
   }
 
+  onIconLoveClick(movie: MovieEntity): void {
+    this.viewModel.addFavoriteMovie(movie);
+  }
+
+  onCloseSuccessFavoriteDialogClick(): void {
+    this.viewModel.onClickCloseSuccessFavoriteDialog();
+  }
+
   private loadInitialData(): void {
     this.viewModel.fetchMovies();
   }

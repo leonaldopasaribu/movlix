@@ -1,8 +1,5 @@
 <div
   class="bg-[#20283E] max-w-fit px-3 pt-3 pb-6 rounded-xl relative w-64 h-[calc(100%-10px)] cursor-pointer"
-  id="CntrCard"
-  aria-hidden="true"
-  (click)="onCardClick()"
 >
   <div class="relative">
     <div
@@ -20,10 +17,13 @@
     >
       <img src="assets/icons/love.svg" class="w-4 h-4" alt="Love Icon" />
     </div>
-    <img
-      src="https://image.tmdb.org/t/p/w342{{ imageUrl }}"
-      alt="Movie Poster"
-    />
+
+    <div id="ImgPoster" aria-hidden="true" (click)="onCardClick()">
+      <img
+        src="https://image.tmdb.org/t/p/w342{{ imageUrl }}"
+        alt="Movie Poster"
+      />
+    </div>
   </div>
   <p class="pt-6 text-base text-white font-semibold">{{ title }}</p>
 </div>

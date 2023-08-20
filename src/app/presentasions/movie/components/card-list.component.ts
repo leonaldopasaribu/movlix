@@ -14,12 +14,16 @@ export class CardListComponent {
   contents: MovieEntity[];
 
   @Output()
-  clicked: EventEmitter<void>;
+  favoriteClicked: EventEmitter<MovieEntity>;
 
   constructor(private router: Router) {
     this.contents = [];
 
-    this.clicked = new EventEmitter();
+    this.favoriteClicked = new EventEmitter();
+  }
+
+  onFavoriteIconClick(movie: MovieEntity): void {
+    this.favoriteClicked.emit(movie);
   }
 
   trackByIndex(index: number): number {

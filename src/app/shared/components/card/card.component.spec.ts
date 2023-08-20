@@ -30,7 +30,7 @@ describe('CardComponent', () => {
 
     fixture.detectChanges();
 
-    const containerCard = debugElement.query(By.css('#CntrCard'));
+    const containerCard = debugElement.query(By.css('#ImgPoster'));
 
     containerCard.triggerEventHandler('click', null);
 
