@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { MovieState } from '../states/movie.state';
-
-import { MovieEntity } from 'src/app/core/entities/movie.entity';
+import { Movie } from '../models/movie.model';
 
 import { Store } from 'src/app/shared/base/store';
 
@@ -20,12 +19,7 @@ export class MovieStore extends Store<MovieState> {
     this.setState({ isError: true, isLoading: false, errorMessage: message });
   }
 
-  populateMovies(movies: {
-    nowPlayingMovies: MovieEntity[];
-    popularMovies: MovieEntity[];
-    topRatedMovies: MovieEntity[];
-    upComingMovies: MovieEntity[];
-  }): void {
+  populateMovies(movies: Movie): void {
     this.setState({ isLoading: false, ...movies });
   }
 
