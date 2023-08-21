@@ -1,22 +1,30 @@
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 
 import { MovieViewModel } from './movie.view-model';
 
 import { MovieStore } from '../stores/movie.store';
+import { Movie } from '../models/movie.model';
 
 import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
 
 import { MovieRepository } from 'src/app/core/repositories/movie.repositories';
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
 
+import { LOCAL_STORAGE_FAVORITE_MOVIES_KEY } from 'src/app/shared/const/local-storage-key.const';
+
 describe('MovieViewModel', () => {
   let viewModel: MovieViewModel;
   let movieStore: MovieStore;
   let router: Router;
+  let localStorageService: LocalStorageService;
 
   const movieStoreSpy = jasmine.createSpyObj('MovieStore', [
+    'markAsLoading',
+    'markAsError',
+    'populateMovies',
+    'openSuccessFavoriteDialog',
     'closeSuccessFavoriteDialog',
     'state',
     'state$',
@@ -31,7 +39,75 @@ describe('MovieViewModel', () => {
   const localStorageServiceSpy = jasmine.createSpyObj('LocalStorageService', [
     'getItem',
     'setItem',
+    'clear',
   ]);
+
+  const nowPlayingMoviesMock: MovieEntity[] = [
+    {
+      backdropUrl: 'Test Backdrop Url',
+      duration: 120,
+      genre: [{ id: 1, name: 'Comedy' }],
+      id: 1,
+      isAdult: false,
+      overview: 'Test Overview',
+      posterUrl: 'Test Poster Url',
+      rating: 8,
+      releaseDate: '2023-10-12',
+      title: 'Test Title',
+    },
+  ];
+
+  const popularMoviesMock: MovieEntity[] = [
+    {
+      backdropUrl: 'Test Backdrop Url',
+      duration: 120,
+      genre: [{ id: 1, name: 'Comedy' }],
+      id: 1,
+      isAdult: false,
+      overview: 'Test Overview',
+      posterUrl: 'Test Poster Url',
+      rating: 8,
+      releaseDate: '2023-10-12',
+      title: 'Test Title',
+    },
+  ];
+
+  const topRatedMoviesMock: MovieEntity[] = [
+    {
+      backdropUrl: 'Test Backdrop Url',
+      duration: 120,
+      genre: [{ id: 1, name: 'Comedy' }],
+      id: 1,
+      isAdult: false,
+      overview: 'Test Overview',
+      posterUrl: 'Test Poster Url',
+      rating: 8,
+      releaseDate: '2023-10-12',
+      title: 'Test Title',
+    },
+  ];
+
+  const upComingMoviesMock: MovieEntity[] = [
+    {
+      backdropUrl: 'Test Backdrop Url',
+      duration: 120,
+      genre: [{ id: 1, name: 'Comedy' }],
+      id: 1,
+      isAdult: false,
+      overview: 'Test Overview',
+      posterUrl: 'Test Poster Url',
+      rating: 8,
+      releaseDate: '2023-10-12',
+      title: 'Test Title',
+    },
+  ];
+
+  const movieMock: Movie = {
+    nowPlayingMovies: nowPlayingMoviesMock,
+    popularMovies: popularMoviesMock,
+    topRatedMovies: topRatedMoviesMock,
+    upComingMovies: upComingMoviesMock,
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -61,6 +137,7 @@ describe('MovieViewModel', () => {
     viewModel = TestBed.inject(MovieViewModel);
     movieStore = TestBed.inject(MovieStore);
     router = TestBed.inject(Router);
+    localStorageService = TestBed.inject(LocalStorageService);
   });
 
   it('should create MovieViewModel', () => {
@@ -226,5 +303,70 @@ describe('MovieViewModel', () => {
     viewModel.onClickCloseSuccessFavoriteDialog();
 
     expect(closeSuccessFavoriteDialogSpy).toHaveBeenCalled();
+  });
+
+  it('should call markAsLoading method when fetchMovies method is called', () => {
+    const markAsLoadingSpy = movieStore.markAsLoading as jasmine.Spy;
+
+    movieRepositorySpy.fetchAll.and.returnValues(
+      of(nowPlayingMoviesMock),
+      of(popularMoviesMock),
+      of(topRatedMoviesMock),
+      of(upComingMoviesMock),
+    );
+
+    viewModel.fetchMovies();
+
+    expect(markAsLoadingSpy).toHaveBeenCalled();
+  });
+
+  it('should call populateMovies method when fetchMovies method is called', () => {
+    const populateMoviesSpy = movieStore.populateMovies as jasmine.Spy;
+
+    movieRepositorySpy.fetchAll.and.returnValues(
+      of(nowPlayingMoviesMock),
+      of(popularMoviesMock),
+      of(topRatedMoviesMock),
+      of(upComingMoviesMock),
+    );
+
+    viewModel.fetchMovies();
+
+    expect(populateMoviesSpy).toHaveBeenCalledWith(movieMock);
+  });
+
+  it('should call markAsError method when fetchMovies method is called', () => {
+    const markAsErrorSpy = movieStore.markAsError as jasmine.Spy;
+
+    movieRepositorySpy.fetchAll.and.returnValues(
+      throwError(() => new Error('Error')),
+    );
+
+    viewModel.fetchMovies();
+
+    expect(markAsErrorSpy).toHaveBeenCalled();
+  });
+
+  it('should call openSuccessFavoriteDialog method when addFavoriteMovie with argument movie is called', () => {
+    const movie = movieMock.nowPlayingMovies[0];
+
+    const openSuccessFavoriteDialogSpy =
+      movieStore.openSuccessFavoriteDialog as jasmine.Spy;
+
+    viewModel.addFavoriteMovie(movie);
+
+    expect(openSuccessFavoriteDialogSpy).toHaveBeenCalled();
+  });
+
+  it('should save a favorite movie to local storage when addFavoriteMovie is called', () => {
+    const movie: MovieEntity = movieMock.nowPlayingMovies[0];
+    const localStorageFavoriteMoviesKey = LOCAL_STORAGE_FAVORITE_MOVIES_KEY;
+    const setItemSpy = localStorageService.setItem as jasmine.Spy;
+
+    viewModel.addFavoriteMovie(movie);
+
+    expect(setItemSpy).toHaveBeenCalledWith(localStorageFavoriteMoviesKey, [
+      movie,
+    ]);
   });
 });
