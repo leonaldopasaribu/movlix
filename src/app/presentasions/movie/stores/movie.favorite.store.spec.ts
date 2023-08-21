@@ -34,7 +34,7 @@ describe('MovieFavoriteStore', () => {
     store = TestBed.inject(MovieFavoriteStore);
   });
 
-  it('should create MovieStore', () => {
+  it('should create MovieFavoriteStore', () => {
     expect(store).toBeTruthy();
   });
 
