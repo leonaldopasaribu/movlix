@@ -1,90 +1,109 @@
 @if (isLoading$ | async) {
-<app-loading-screen></app-loading-screen>
+  <app-loading-screen></app-loading-screen>
 } @else {
-<app-header></app-header>
-<div class="px-14 pb-10">
-  <button
-    aria-hidden="true"
-    class="mt-6 text-gray-400 flex items-center gap-3 cursor-pointer"
-    id="BtnBack"
-    (click)="onButtonBackClick()"
-  >
-    <img
-      src="assets/icons/arrow-right.svg"
-      class="rotate-180 w-6 h-6"
-      alt="Back Icon"
-    />
-    <p>Back</p>
-  </button>
-  <div class="relative w-full flex justify-center mt-10">
-    <div class="w-[1200px]">
-      <img
-        src="https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/{{
-          (movie$ | async)?.backdropUrl
-        }}"
-        class="w-full rounded-3xl"
-        alt="Movie Image"
-      />
-    </div>
-  </div>
-  <div class="relative">
-    <div
-      class="bg-[#20283E] w-full rounded-3xl p-6 absolute translate-y-[-50%] opacity-90 lg:w-96 lg:p-10 xl:mx-80"
+  <app-header></app-header>
+  <div class="px-14 pb-10">
+    <button
+      aria-hidden="true"
+      class="mt-6 text-gray-400 flex items-center gap-3 cursor-pointer"
+      id="BtnBack"
+      (click)="onButtonBackClick()"
     >
-      <h2 class="text-white font-bold text-lg lg:text-4xl">
-        {{ (movie$ | async)?.title }}
-      </h2>
-    </div>
-  </div>
-  <div
-    class="mt-24 flex flex-col gap-8 my-0 mx-auto xl:flex-row lg:mt-32 xl:px-72"
-  >
-    <div>
       <img
-        src="https://image.tmdb.org/t/p/w342{{ (movie$ | async)?.posterUrl }}"
-        class="rounded-2xl my-0 mx-auto"
-        alt="Movie Poster"
+        src="assets/icons/arrow-right.svg"
+        class="rotate-180 w-6 h-6"
+        alt="Back Icon"
+        width="24"
+        height="24"
       />
+      <p>Back</p>
+    </button>
+    <div class="relative w-full flex justify-center mt-10">
+      <div class="w-[1200px]">
+        <img
+          src="https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/{{
+            (movie$ | async)?.backdropUrl
+          }}"
+          class="w-full rounded-3xl"
+          alt="Movie Image"
+          width="1920"
+          height="800"
+        />
+      </div>
     </div>
-    <div class="w-full">
-      <h2 class="text-2xl text-white uppercase font-bold">The Synopsis</h2>
-      <p class="text-gray-200 pt-3">
-        {{ (movie$ | async)?.overview }}
-      </p>
+    <div class="relative">
       <div
-        class="mt-6 rounded-lg p-2 text-[#FFAD49] text-sm flex gap-1 w-14 bg-black"
+        class="bg-[#20283E] w-full rounded-3xl p-6 absolute translate-y-[-50%] opacity-90 lg:w-96 lg:p-10 xl:mx-80"
       >
-        <img src="assets/icons/star.svg" alt="Star Icon" />
-        <p>{{ (movie$ | async)?.rating | number: '1.1-1' }}</p>
+        <h2 class="text-white font-bold text-lg lg:text-4xl">
+          {{ (movie$ | async)?.title }}
+        </h2>
       </div>
-      <div class="grid grid-cols-2">
-        <div class="mt-6">
-          <p class="text-gray-400">Type</p>
-          <p class="mt-3 text-gray-200">Movie</p>
-        </div>
-        <div class="mt-6">
-          <p class="text-gray-400">Release Date:</p>
-          <p class="mt-3 text-gray-200">
-            {{ (movie$ | async)?.releaseDate }}
-          </p>
-        </div>
+    </div>
+    <div
+      class="mt-24 flex flex-col gap-8 my-0 mx-auto xl:flex-row lg:mt-32 xl:px-72"
+    >
+      <div>
+        <img
+          src="https://image.tmdb.org/t/p/w342{{ (movie$ | async)?.posterUrl }}"
+          class="rounded-2xl my-0 mx-auto"
+          alt="Movie Poster"
+          width="342"
+          height="513"
+        />
       </div>
-      <div class="grid grid-cols-2">
-        <div class="mt-6">
-          <p class="text-gray-400">Run Time</p>
-          <p class="mt-3 text-gray-200">{{ (movie$ | async)?.duration }} min</p>
+      <div class="w-full">
+        <h2 class="text-2xl text-white uppercase font-bold">The Synopsis</h2>
+        <p class="text-gray-200 pt-3">
+          {{ (movie$ | async)?.overview }}
+        </p>
+        <div
+          class="mt-6 rounded-lg p-2 text-[#FFAD49] text-sm flex gap-1 w-14 bg-black"
+        >
+          <img
+            src="assets/icons/star.svg"
+            alt="Star Icon"
+            width="16"
+            height="16"
+          />
+          <p>{{ (movie$ | async)?.rating | number: '1.1-1' }}</p>
         </div>
-        <div class="mt-6">
-          <p class="text-gray-400">Genres</p>
-          <p class="mt-3 text-gray-200">
-            @for (genre of (movie$ | async)?.genre; track genre.id; let i =
-            $index) {
-            {{ genre.name }}@if (i < ((movie$ | async)?.genre?.length ?? 0) - 1)
-            {,} }
-          </p>
+        <div class="grid grid-cols-2">
+          <div class="mt-6">
+            <p class="text-gray-400">Type</p>
+            <p class="mt-3 text-gray-200">Movie</p>
+          </div>
+          <div class="mt-6">
+            <p class="text-gray-400">Release Date:</p>
+            <p class="mt-3 text-gray-200">
+              {{ (movie$ | async)?.releaseDate }}
+            </p>
+          </div>
+        </div>
+        <div class="grid grid-cols-2">
+          <div class="mt-6">
+            <p class="text-gray-400">Run Time</p>
+            <p class="mt-3 text-gray-200">
+              {{ (movie$ | async)?.duration }} min
+            </p>
+          </div>
+          <div class="mt-6">
+            <p class="text-gray-400">Genres</p>
+            <p class="mt-3 text-gray-200">
+              @for (
+                genre of (movie$ | async)?.genre;
+                track genre.id;
+                let i = $index
+              ) {
+                {{ genre.name }}
+                @if (i < ((movie$ | async)?.genre?.length ?? 0) - 1) {
+                  ,
+                }
+              }
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 }
