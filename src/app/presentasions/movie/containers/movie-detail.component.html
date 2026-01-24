@@ -21,13 +21,15 @@
     <div class="relative w-full flex justify-center mt-10">
       <div class="w-[1200px]">
         <img
-          src="https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/{{
+          [ngSrc]="
+            'https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/' +
             (movie$ | async)?.backdropUrl
-          }}"
+          "
           class="w-full rounded-3xl"
           alt="Movie Image"
           width="1920"
           height="800"
+          priority
         />
       </div>
     </div>
@@ -45,11 +47,14 @@
     >
       <div>
         <img
-          src="https://image.tmdb.org/t/p/w342{{ (movie$ | async)?.posterUrl }}"
+          [ngSrc]="
+            'https://image.tmdb.org/t/p/w342' + (movie$ | async)?.posterUrl
+          "
           class="rounded-2xl my-0 mx-auto"
           alt="Movie Poster"
           width="342"
           height="513"
+          loading="lazy"
         />
       </div>
       <div class="w-full">

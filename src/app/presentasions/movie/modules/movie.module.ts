@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { MovieRoutingModule } from './movie-routing.module';
@@ -37,6 +37,7 @@ import { MovieRepository } from 'src/app/core/repositories/movie.repositories';
   ],
   imports: [
     CommonModule,
+    NgOptimizedImage,
     MovieRoutingModule,
     HeaderModule,
     CardModule,

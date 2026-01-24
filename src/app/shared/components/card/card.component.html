@@ -39,10 +39,11 @@
       (click)="onCardClick()"
     >
       <img
-        src="https://image.tmdb.org/t/p/w342{{ imageUrl }}"
+        [ngSrc]="'https://image.tmdb.org/t/p/w342' + imageUrl"
         alt="Movie Poster"
         width="342"
         height="513"
+        loading="lazy"
       />
     </div>
   </div>
