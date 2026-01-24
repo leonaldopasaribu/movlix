@@ -8,7 +8,8 @@ import { MOVIE_ID_QUERY_PARAM_NAME } from '../const/movie-detail.const';
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
 
 @Component({
-  templateUrl: './movie-detail.component.html',
+    templateUrl: './movie-detail.component.html',
+    standalone: false
 })
 export class MovieDetailComponent implements OnInit {
   isLoading$: Observable<boolean>;

@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-success-favorite-dialog',
-  templateUrl: './success-favorite-dialog.component.html',
+    selector: 'app-success-favorite-dialog',
+    templateUrl: './success-favorite-dialog.component.html',
+    standalone: false
 })
 export class SuccessFavoriteDialogComponent {
   @Output()

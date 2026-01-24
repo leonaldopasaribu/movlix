@@ -1,34 +1,36 @@
 <div
   class="bg-[#20283E] max-w-fit px-3 pt-3 pb-6 rounded-xl relative w-64 h-[calc(100%-10px)]"
->
+  >
   <div class="relative">
-    <div
-      *ngIf="hasRating"
-      class="mt-1 ml-1 rounded-lg p-2 text-[#FFAD49] text-sm flex gap-1 absolute bg-black"
-    >
-      <img src="assets/icons/star.svg" alt="Star Icon" />
-      <p>{{ rating }}</p>
-    </div>
-    <div
-      *ngIf="hasFavorite"
-      aria-hidden="true"
-      class="mt-1 mr-1 rounded-lg p-2.5 text-[#FFAD49] text-sm flex gap-1 absolute right-0 bg-black cursor-pointer"
-      id="CntrFavoriteIcon"
-      (click)="onFavoriteIconClick()"
-    >
-      <img src="assets/icons/love.svg" class="w-4 h-4" alt="Love Icon" />
-    </div>
+    @if (hasRating) {
+      <div
+        class="mt-1 ml-1 rounded-lg p-2 text-[#FFAD49] text-sm flex gap-1 absolute bg-black"
+        >
+        <img src="assets/icons/star.svg" alt="Star Icon" />
+        <p>{{ rating }}</p>
+      </div>
+    }
+    @if (hasFavorite) {
+      <div
+        aria-hidden="true"
+        class="mt-1 mr-1 rounded-lg p-2.5 text-[#FFAD49] text-sm flex gap-1 absolute right-0 bg-black cursor-pointer"
+        id="CntrFavoriteIcon"
+        (click)="onFavoriteIconClick()"
+        >
+        <img src="assets/icons/love.svg" class="w-4 h-4" alt="Love Icon" />
+      </div>
+    }
 
     <div
       aria-hidden="true"
       class="cursor-pointer"
       id="CntrImageCard"
       (click)="onCardClick()"
-    >
+      >
       <img
         src="https://image.tmdb.org/t/p/w342{{ imageUrl }}"
         alt="Movie Poster"
-      />
+        />
     </div>
   </div>
   <p class="pt-6 text-base text-white font-semibold">{{ title }}</p>

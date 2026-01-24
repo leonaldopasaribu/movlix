@@ -1,6 +1,7 @@
 <div class="w-full">
   <div class="flex gap-6 overflow-x-auto lg:grid lg:grid-cols-8">
-    <div *ngFor="let content of contents; trackBy: trackByIndex">
+    @for (content of contents; track content.id) {
+    <div>
       <app-card
         [id]="content.id"
         [imageUrl]="content.posterUrl"
@@ -12,5 +13,6 @@
         (favoriteClicked)="onFavoriteIconClick(content)"
       ></app-card>
     </div>
+    }
   </div>
 </div>

@@ -6,7 +6,8 @@ import { MovieFavoriteViewModel } from '../view-models/movie-favorite.view-model
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
 
 @Component({
-  templateUrl: './movie-favorite.component.html',
+    templateUrl: './movie-favorite.component.html',
+    standalone: false
 })
 export class MovieFavoriteComponent implements OnInit {
   isLoading$: Observable<boolean>;

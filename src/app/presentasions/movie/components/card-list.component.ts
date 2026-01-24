@@ -6,8 +6,9 @@ import { MovieEntity } from 'src/app/core/entities/movie.entity';
 import { MOVIE_URL } from 'src/app/shared/const/route-url.const';
 
 @Component({
-  selector: 'app-card-list',
-  templateUrl: './card-list.component.html',
+    selector: 'app-card-list',
+    templateUrl: './card-list.component.html',
+    standalone: false
 })
 export class CardListComponent {
   @Input()

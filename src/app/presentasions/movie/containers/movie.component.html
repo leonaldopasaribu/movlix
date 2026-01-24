@@ -1,13 +1,9 @@
-<ng-container *ngIf="isLoading$ | async; else loadedTemplate">
+@if (isLoading$ | async) {
   <app-loading-screen></app-loading-screen>
-</ng-container>
-
-<ng-template #loadedTemplate>
+} @else {
   <app-header></app-header>
-
   <div class="px-14 pb-14">
     <app-hero></app-hero>
-
     <div class="mt-20">
       <div class="mb-8">
         <h2 class="text-gray-200 text-2xl uppercase font-bold">Now Playing</h2>
@@ -19,7 +15,6 @@
           ></app-card-list>
         </div>
       </div>
-
       <div class="mb-8">
         <h2 class="text-gray-200 text-2xl uppercase font-bold">Popular</h2>
         <div class="mt-3">
@@ -30,7 +25,6 @@
           ></app-card-list>
         </div>
       </div>
-
       <div class="mb-8">
         <h2 class="text-gray-200 text-2xl uppercase font-bold">Top Rated</h2>
         <div class="mt-3">
@@ -41,7 +35,6 @@
           ></app-card-list>
         </div>
       </div>
-
       <div class="mb-8">
         <h2 class="text-gray-200 text-2xl uppercase font-bold">Up Coming</h2>
         <div class="mt-3">
@@ -54,9 +47,10 @@
       </div>
     </div>
   </div>
+  @if (isShowSuccessFavoriteDialog$ | async) {
+    <app-success-favorite-dialog
+      (closeClicked)="onCloseSuccessFavoriteDialogClick()"
+    ></app-success-favorite-dialog>
+  }
+}
 
-  <app-success-favorite-dialog
-    *ngIf="isShowSuccessFavoriteDialog$ | async"
-    (closeClicked)="onCloseSuccessFavoriteDialogClick()"
-  ></app-success-favorite-dialog>
-</ng-template>

@@ -1,7 +1,4 @@
-import {
-  HttpClientTestingModule,
-  HttpTestingController,
-} from '@angular/common/http/testing';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
 import { MovieRepositoryTmdb } from './movie.repository.tmdb';
@@ -14,6 +11,7 @@ import { MovieEntity } from 'src/app/core/entities/movie.entity';
 import { MovieType } from 'src/app/core/entities/movie-type.enum';
 
 import { environment } from 'src/environments/environment';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('MovieRepositoryTmdb', () => {
   let httpTestingController: HttpTestingController;
@@ -69,15 +67,17 @@ describe('MovieRepositoryTmdb', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [
+    imports: [],
+    providers: [
         MovieRepositoryTmdb,
         {
-          provide: MovieMapperTmdb,
-          useValue: movieMapperTunaikuSpy,
+            provide: MovieMapperTmdb,
+            useValue: movieMapperTunaikuSpy,
         },
-      ],
-    });
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
+    ]
+});
   });
 
   beforeEach(() => {

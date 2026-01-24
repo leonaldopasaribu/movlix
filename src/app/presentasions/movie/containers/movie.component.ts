@@ -6,7 +6,8 @@ import { MovieViewModel } from '../view-models/movie.view-model';
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
 
 @Component({
-  templateUrl: './movie.component.html',
+    templateUrl: './movie.component.html',
+    standalone: false
 })
 export class MovieComponent implements OnInit {
   isLoading$: Observable<boolean>;
