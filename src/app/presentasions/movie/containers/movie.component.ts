@@ -10,6 +10,8 @@ import { HeroComponent } from '../components/hero.component';
 import { CardListComponent } from '../components/card-list.component';
 import { SuccessFavoriteDialogComponent } from '../components/success-favorite-dialog.component';
 import { AsyncPipe } from '@angular/common';
+import { SeoService } from '../../../shared/services/seo/seo.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   templateUrl: './movie.component.html',
@@ -24,6 +26,7 @@ import { AsyncPipe } from '@angular/common';
 })
 export class MovieComponent implements OnInit {
   private viewModel = inject(MovieViewModel);
+  private seoService = inject(SeoService);
 
   isLoading$: Observable<boolean>;
   isShowSuccessFavoriteDialog$: Observable<boolean>;
@@ -48,6 +51,7 @@ export class MovieComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.setupSeo();
     this.loadInitialData();
   }
 
@@ -65,5 +69,32 @@ export class MovieComponent implements OnInit {
 
   private loadInitialData(): void {
     this.viewModel.fetchMovies();
+  }
+
+  private setupSeo(): void {
+    this.seoService.updateMetaTags({
+      title: 'Movlix - Discover Movies & TV Shows',
+      description:
+        'Discover the latest movies and TV shows. Browse trending, popular, top rated, and upcoming movies. Watch trailers and manage your favorites.',
+      url: environment.pageUrl,
+      type: 'website',
+    });
+
+    this.seoService.setCanonicalUrl(environment.pageUrl);
+
+    // JSON-LD Schema for Website
+    this.seoService.setJsonLd({
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: 'Movlix',
+      url: environment.pageUrl,
+      description:
+        'Discover the latest movies and TV shows. Browse trending, popular, top rated, and upcoming movies.',
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: `${environment.pageUrl}/search?q={search_term_string}`,
+        'query-input': 'required name=search_term_string',
+      },
+    });
   }
 }

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import {
   provideHttpClient,
   withInterceptorsFromDi,
@@ -12,6 +12,6 @@ import { AppComponent } from './app.component';
   declarations: [AppComponent],
   bootstrap: [AppComponent],
   imports: [BrowserModule, AppRoutingModule],
-  providers: [provideHttpClient(withInterceptorsFromDi())],
+  providers: [provideHttpClient(withInterceptorsFromDi()), provideClientHydration(withEventReplay())],
 })
 export class AppModule {}

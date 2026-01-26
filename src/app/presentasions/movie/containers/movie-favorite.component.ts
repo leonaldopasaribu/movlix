@@ -8,6 +8,8 @@ import { LoadingScreenComponent } from '../../../shared/components/loading-scree
 import { HeaderComponent } from '../../../shared/components/header/header.component';
 import { CardListComponent } from '../components/card-list.component';
 import { AsyncPipe } from '@angular/common';
+import { SeoService } from '../../../shared/services/seo/seo.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   templateUrl: './movie-favorite.component.html',
@@ -20,6 +22,7 @@ import { AsyncPipe } from '@angular/common';
 })
 export class MovieFavoriteComponent implements OnInit {
   private viewModel = inject(MovieFavoriteViewModel);
+  private seoService = inject(SeoService);
 
   isLoading$: Observable<boolean>;
 
@@ -35,10 +38,25 @@ export class MovieFavoriteComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.setupSeo();
     this.viewModel.getFavoriteMovies();
   }
 
   trackByIndex(index: number): number {
     return index;
+  }
+
+  private setupSeo(): void {
+    const favoriteUrl = `${environment.pageUrl}/movie/favorite`;
+
+    this.seoService.updateMetaTags({
+      title: 'My Favorite Movies - Movlix',
+      description:
+        'Browse and manage your favorite movies collection on Movlix. Keep track of movies you love.',
+      url: favoriteUrl,
+      type: 'website',
+    });
+
+    this.seoService.setCanonicalUrl(favoriteUrl);
   }
 }

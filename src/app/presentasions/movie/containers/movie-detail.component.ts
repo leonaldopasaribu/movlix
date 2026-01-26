@@ -1,6 +1,6 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 
 import { MovieDetailViewModel } from '../view-models/movie-detail.view-model';
@@ -14,6 +14,8 @@ import { MovieEntity } from 'src/app/core/entities/movie.entity';
 import { LoadingScreenComponent } from '../../../shared/components/loading-screen/loading-screen.component';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
 import { NgOptimizedImage, AsyncPipe, DecimalPipe } from '@angular/common';
+import { SeoService } from '../../../shared/services/seo/seo.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   templateUrl: './movie-detail.component.html',
@@ -25,10 +27,12 @@ import { NgOptimizedImage, AsyncPipe, DecimalPipe } from '@angular/common';
     DecimalPipe,
   ],
 })
-export class MovieDetailComponent implements OnInit {
+export class MovieDetailComponent implements OnInit, OnDestroy {
   private viewModel = inject(MovieDetailViewModel);
   private activatedRoute = inject(ActivatedRoute);
   private dialog = inject(MatDialog);
+  private seoService = inject(SeoService);
+  private destroy$ = new Subject<void>();
 
   isLoading$: Observable<boolean>;
 
@@ -45,6 +49,12 @@ export class MovieDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadInitialData();
+    this.setupSeo();
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   trackByIndex(index: number): number {
@@ -79,5 +89,43 @@ export class MovieDetailComponent implements OnInit {
     );
 
     this.viewModel.fetchMovieDetails(Number(movieId));
+  }
+
+  private setupSeo(): void {
+    this.movie$.pipe(takeUntil(this.destroy$)).subscribe(movie => {
+      if (movie) {
+        const movieUrl = `${environment.pageUrl}/movie/${movie.id}`;
+        const genres = movie.genre.map(g => g.name).join(', ');
+
+        this.seoService.updateMetaTags({
+          title: `${movie.title} (${new Date(movie.releaseDate).getFullYear()}) - Movlix`,
+          description:
+            movie.overview ||
+            `Watch ${movie.title} on Movlix. A ${genres} movie.`,
+          image: movie.backdropUrl || movie.posterUrl,
+          url: movieUrl,
+          keywords: `${movie.title}, movie, watch online, ${genres}`,
+          type: 'video.movie',
+        });
+
+        this.seoService.setCanonicalUrl(movieUrl);
+
+        // JSON-LD Schema for Movie
+        this.seoService.setJsonLd({
+          '@context': 'https://schema.org',
+          '@type': 'Movie',
+          name: movie.title,
+          description: movie.overview,
+          image: movie.posterUrl,
+          datePublished: movie.releaseDate,
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: movie.rating,
+            bestRating: 10,
+          },
+          genre: movie.genre.map(g => g.name),
+        });
+      }
+    });
   }
 }
