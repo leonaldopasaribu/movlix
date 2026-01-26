@@ -4,6 +4,7 @@ import { Observable, map } from 'rxjs';
 
 import { MovieMapperTmdb } from './movie.mapper.tmdb';
 import { MovieDtoTmdb } from './movie.dto.tmdb';
+import { MovieVideoDtoTmdb } from './movie-video.dto.tmdb';
 
 import { FetchResponse } from '../base/response.model';
 
@@ -53,5 +54,24 @@ export class MovieRepositoryTmdb extends MovieRepository {
     return this.http
       .get<MovieDtoTmdb>(url, header)
       .pipe(map((dto: MovieDtoTmdb) => this.mapper.toEntity(dto)));
+  }
+
+  override fetchVideos(movieId: number): Observable<string | null> {
+    const url = `${this.baseUrl}/${this.apiVersion}/movie/${movieId}/videos`;
+
+    return this.http.get<MovieVideoDtoTmdb>(url, AUTHORIZATION_HEADER).pipe(
+      map(response => {
+        const youtubeTrailers = response.results.filter(
+          video => video.site === 'YouTube' && video.type === 'Trailer',
+        );
+
+        const officialTrailer = youtubeTrailers.find(video => video.official);
+        const selectedVideo = officialTrailer || youtubeTrailers[0];
+
+        return selectedVideo
+          ? `https://www.youtube.com/watch?v=${selectedVideo.key}`
+          : null;
+      }),
+    );
   }
 }

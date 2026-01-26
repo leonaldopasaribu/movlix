@@ -11,4 +11,5 @@ export interface MovieEntity {
   rating: number;
   releaseDate: string;
   title: string;
+  trailerUrl?: string | null;
 }

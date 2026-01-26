@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Location } from '@angular/common';
-import { distinctUntilChanged, map, Observable } from 'rxjs';
+import { distinctUntilChanged, map, Observable, forkJoin } from 'rxjs';
 
 import { MovieDetailStore } from '../stores/movie-detail.store';
 
@@ -34,9 +34,13 @@ export class MovieDetailViewModel {
   fetchMovieDetails(movieId: number): void {
     this.activateLoading();
 
-    this.movieRepository.fetchOneById(movieId).subscribe({
-      next: value => {
-        this.handleSuccessFetchMovieDetails(value);
+    forkJoin({
+      movie: this.movieRepository.fetchOneById(movieId),
+      trailerUrl: this.movieRepository.fetchVideos(movieId),
+    }).subscribe({
+      next: ({ movie, trailerUrl }) => {
+        const movieWithTrailer = { ...movie, trailerUrl };
+        this.handleSuccessFetchMovieDetails(movieWithTrailer);
       },
       error: (error: HttpErrorResponse) => {
         this.handleErrorFetchMovieDetails(error);

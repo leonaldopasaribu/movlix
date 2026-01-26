@@ -1,0 +1,75 @@
+<div
+  mat-dialog-content
+  class="!p-0 !overflow-hidden !max-h-none !bg-transparent"
+>
+  <div
+    class="relative w-[95vw] max-w-6xl mx-auto flex flex-col overflow-hidden rounded-[2.5rem] bg-[#121829] ring-1 ring-white/10"
+  >
+    <div
+      class="relative flex items-center justify-between px-8 py-4 border-b border-white/5 z-20"
+    >
+      <div class="flex items-center gap-4"></div>
+
+      <div class="flex items-center gap-2">
+        <button
+          (click)="openFullscreen()"
+          class="flex items-center cursor-pointer justify-center w-10 h-10 rounded-xl hover:bg-white/10 transition-all duration-300 group"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 text-zinc-400 group-hover:text-white"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M15 3h6m0 0v6m0-6L14 10M9 21H3m0 0v-6m0 6l7-7"
+            />
+          </svg>
+        </button>
+
+        <button
+          (click)="onCloseClick()"
+          class="flex items-center cursor-pointer justify-center w-10 h-10 rounded-xl bg-white/5 hover:bg-red-600 transition-all duration-500 group"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 text-zinc-300 group-hover:text-white"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="relative w-full aspect-video bg-black group/video">
+      <iframe
+        [src]="sanitizedVideoUrl"
+        class="absolute top-0 left-0 w-full h-full"
+        frameborder="0"
+        allow="
+          accelerometer;
+          autoplay;
+          clipboard-write;
+          encrypted-media;
+          gyroscope;
+          picture-in-picture;
+        "
+        allowfullscreen
+      ></iframe>
+
+      <div class="absolute bottom-0 inset-x-0 h-32 pointer-events-none"></div>
+    </div>
+  </div>
+</div>

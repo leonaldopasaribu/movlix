@@ -1,2 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @use 'tailwindcss';
+
+/* Material Dialog Styles */
+.trailer-dialog .mat-mdc-dialog-container {
+  padding: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+.trailer-dialog .mat-mdc-dialog-surface {
+  background: transparent !important;
+  box-shadow: none !important;
+}
