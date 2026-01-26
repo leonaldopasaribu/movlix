@@ -27,32 +27,30 @@ import { MovieRepositoryTmdb } from 'src/app/data/movie/movie.repository.tmdb';
 import { MovieRepository } from 'src/app/core/repositories/movie.repositories';
 
 @NgModule({
-  declarations: [
-    MovieComponent,
-    HeroComponent,
-    CardListComponent,
-    MovieDetailComponent,
-    SuccessFavoriteDialogComponent,
-    MovieFavoriteComponent,
-  ],
-  imports: [
-    CommonModule,
-    NgOptimizedImage,
-    MovieRoutingModule,
-    HeaderModule,
-    CardModule,
-    LoadingScreenModule,
-    DialogModule,
-  ],
-  providers: [
-    MovieStore,
-    MovieDetailStore,
-    MovieFavoriteStore,
-    MovieViewModel,
-    MovieDetailViewModel,
-    MovieFavoriteViewModel,
-    MovieMapperTmdb,
-    { provide: MovieRepository, useClass: MovieRepositoryTmdb },
-  ],
+    imports: [
+        CommonModule,
+        NgOptimizedImage,
+        MovieRoutingModule,
+        HeaderModule,
+        CardModule,
+        LoadingScreenModule,
+        DialogModule,
+        MovieComponent,
+        HeroComponent,
+        CardListComponent,
+        MovieDetailComponent,
+        SuccessFavoriteDialogComponent,
+        MovieFavoriteComponent,
+    ],
+    providers: [
+        MovieStore,
+        MovieDetailStore,
+        MovieFavoriteStore,
+        MovieViewModel,
+        MovieDetailViewModel,
+        MovieFavoriteViewModel,
+        MovieMapperTmdb,
+        { provide: MovieRepository, useClass: MovieRepositoryTmdb },
+    ],
 })
 export class MovieModule {}

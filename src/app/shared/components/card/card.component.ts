@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
     selector: 'app-card',
     templateUrl: './card.component.html',
-    standalone: false
+    imports: [NgOptimizedImage]
 })
 export class CardComponent {
   @Input()

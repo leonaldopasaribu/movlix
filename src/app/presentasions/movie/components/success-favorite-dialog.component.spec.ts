@@ -10,9 +10,8 @@ describe('SuccessFavoriteDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SuccessFavoriteDialogComponent],
-      imports: [DialogModule],
-    }).compileComponents();
+    imports: [DialogModule, SuccessFavoriteDialogComponent],
+}).compileComponents();
   });
 
   beforeEach(() => {

@@ -4,11 +4,12 @@ import { Router } from '@angular/router';
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
 
 import { MOVIE_URL } from 'src/app/shared/const/route-url.const';
+import { CardComponent } from '../../../shared/components/card/card.component';
 
 @Component({
     selector: 'app-card-list',
     templateUrl: './card-list.component.html',
-    standalone: false
+    imports: [CardComponent]
 })
 export class CardListComponent {
   private router = inject(Router);

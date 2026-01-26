@@ -6,10 +6,13 @@ import { MovieDetailViewModel } from '../view-models/movie-detail.view-model';
 import { MOVIE_ID_QUERY_PARAM_NAME } from '../const/movie-detail.const';
 
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
+import { LoadingScreenComponent } from '../../../shared/components/loading-screen/loading-screen.component';
+import { HeaderComponent } from '../../../shared/components/header/header.component';
+import { NgOptimizedImage, AsyncPipe, DecimalPipe } from '@angular/common';
 
 @Component({
     templateUrl: './movie-detail.component.html',
-    standalone: false
+    imports: [LoadingScreenComponent, HeaderComponent, NgOptimizedImage, AsyncPipe, DecimalPipe]
 })
 export class MovieDetailComponent implements OnInit {
   private viewModel = inject(MovieDetailViewModel);

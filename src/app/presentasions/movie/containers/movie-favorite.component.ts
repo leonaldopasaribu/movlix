@@ -4,10 +4,14 @@ import { Observable } from 'rxjs';
 import { MovieFavoriteViewModel } from '../view-models/movie-favorite.view-model';
 
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
+import { LoadingScreenComponent } from '../../../shared/components/loading-screen/loading-screen.component';
+import { HeaderComponent } from '../../../shared/components/header/header.component';
+import { CardListComponent } from '../components/card-list.component';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     templateUrl: './movie-favorite.component.html',
-    standalone: false
+    imports: [LoadingScreenComponent, HeaderComponent, CardListComponent, AsyncPipe]
 })
 export class MovieFavoriteComponent implements OnInit {
   private viewModel = inject(MovieFavoriteViewModel);
