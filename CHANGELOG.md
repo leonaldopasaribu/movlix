@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/leonaldopasaribu/movlix/compare/v0.0.2...v0.0.3) (2026-01-26)
+
+
+### Code Refactoring
+
+* change card and card list ui dan structure ([79bd35e](https://github.com/leonaldopasaribu/movlix/commit/79bd35ec28271da169699046daf3f2b057a61255))
+
 ### [0.0.2](https://github.com/leonaldopasaribu/movlix/compare/v0.0.1...v0.0.2) (2026-01-26)
 
 ### 0.0.1 (2026-01-26)
