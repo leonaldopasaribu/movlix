@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/leonaldopasaribu/movlix/compare/v1.0.1...v1.1.0) (2026-01-26)
+
+
+### Features
+
+* integrate @vercel/analytics for enhanced tracking ([9f34c75](https://github.com/leonaldopasaribu/movlix/commit/9f34c752e1a91548feb983986c7ed45e590556c8))
+
 ### [1.0.1](https://github.com/leonaldopasaribu/movlix/compare/v1.0.0...v1.0.1) (2026-01-26)
 
 ## [1.0.0](https://github.com/leonaldopasaribu/movlix/compare/v0.0.3...v1.0.0) (2026-01-26)
