@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { MovieComponent } from '../containers/movie.component';
-import { MovieDetailComponent } from '../containers/movie-detail.component';
-import { MovieFavoriteComponent } from '../containers/movie-favorite.component';
+
+
+
 
 const routes: Routes = [
   {
     path: '',
-    component: MovieComponent,
+    loadComponent: () => import('../containers/movie.component').then(m => m.MovieComponent),
   },
   {
     path: 'movie/favorite',
-    component: MovieFavoriteComponent,
+    loadComponent: () => import('../containers/movie-favorite.component').then(m => m.MovieFavoriteComponent),
   },
   {
     path: 'movie/:movieId',
-    component: MovieDetailComponent,
+    loadComponent: () => import('../containers/movie-detail.component').then(m => m.MovieDetailComponent),
   },
 ];
 @NgModule({
