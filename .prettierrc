@@ -9,5 +9,6 @@
   "jsxBracketSameLine": false,
   "arrowParens": "avoid",
   "endOfLine": "lf",
-  "htmlWhitespaceSensitivity": "ignore"
+  "htmlWhitespaceSensitivity": "ignore",
+  "plugins": ["prettier-plugin-tailwindcss"]
 }

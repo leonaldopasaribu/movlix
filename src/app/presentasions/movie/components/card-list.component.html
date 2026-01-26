@@ -1,9 +1,9 @@
 <div class="w-full px-4 py-6">
   <div
-    class="flex gap-4 overflow-x-auto pb-6 snap-x snap-mandatory hide-scrollbar lg:grid lg:grid-cols-3 lg:gap-6 lg:overflow-visible xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6"
+    class="hide-scrollbar 3xl:grid-cols-6 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-6 lg:grid lg:grid-cols-3 lg:gap-6 lg:overflow-visible xl:grid-cols-4 2xl:grid-cols-5"
   >
     @for (content of contents; track content.id) {
-      <div class="snap-start shrink-0 w-36 sm:w-40 md:w-44 lg:w-auto">
+      <div class="w-36 shrink-0 snap-start sm:w-40 md:w-44 lg:w-auto">
         <app-card
           [id]="content.id"
           [imageUrl]="content.posterUrl"

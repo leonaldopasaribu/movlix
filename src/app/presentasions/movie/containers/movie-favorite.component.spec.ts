@@ -20,14 +20,19 @@ describe('MovieFavoriteComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [HeaderModule, DialogModule, MovieFavoriteComponent, CardListComponent],
-    providers: [
+      imports: [
+        HeaderModule,
+        DialogModule,
+        MovieFavoriteComponent,
+        CardListComponent,
+      ],
+      providers: [
         {
-            provide: MovieFavoriteViewModel,
-            useValue: movieFavoriteViewModelSpy,
+          provide: MovieFavoriteViewModel,
+          useValue: movieFavoriteViewModelSpy,
         },
-    ],
-}).compileComponents();
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

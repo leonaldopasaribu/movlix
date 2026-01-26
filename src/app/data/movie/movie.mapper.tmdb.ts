@@ -7,9 +7,10 @@ import { MovieEntity } from 'src/app/core/entities/movie.entity';
 import { EntityMapper } from 'src/app/shared/base/mapper';
 
 @Injectable()
-export class MovieMapperTmdb
-  implements EntityMapper<MovieDtoTmdb, MovieEntity>
-{
+export class MovieMapperTmdb implements EntityMapper<
+  MovieDtoTmdb,
+  MovieEntity
+> {
   toEntity(dto: MovieDtoTmdb): MovieEntity {
     return {
       backdropUrl: dto.backdrop_path,

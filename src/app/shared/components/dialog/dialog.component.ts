@@ -1,8 +1,8 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
-    selector: 'app-dialog',
-    templateUrl: './dialog.component.html'
+  selector: 'app-dialog',
+  templateUrl: './dialog.component.html',
 })
 export class DialogComponent {
   @Output()

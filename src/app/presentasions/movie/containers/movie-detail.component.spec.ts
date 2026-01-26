@@ -24,24 +24,29 @@ describe('MovieDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [LoadingScreenModule, HeaderModule, MovieDetailComponent, CardListComponent],
-    providers: [
+      imports: [
+        LoadingScreenModule,
+        HeaderModule,
+        MovieDetailComponent,
+        CardListComponent,
+      ],
+      providers: [
         {
-            provide: MovieDetailViewModel,
-            useValue: movieDetailViewModelSpy,
+          provide: MovieDetailViewModel,
+          useValue: movieDetailViewModelSpy,
         },
         {
-            provide: ActivatedRoute,
-            useValue: {
-                snapshot: {
-                    paramMap: {
-                        get: jasmine.createSpy('paramMap.get').and.returnValue('1'),
-                    },
-                },
+          provide: ActivatedRoute,
+          useValue: {
+            snapshot: {
+              paramMap: {
+                get: jasmine.createSpy('paramMap.get').and.returnValue('1'),
+              },
             },
+          },
         },
-    ],
-}).compileComponents();
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -12,8 +12,15 @@ import { SuccessFavoriteDialogComponent } from '../components/success-favorite-d
 import { AsyncPipe } from '@angular/common';
 
 @Component({
-    templateUrl: './movie.component.html',
-    imports: [LoadingScreenComponent, HeaderComponent, HeroComponent, CardListComponent, SuccessFavoriteDialogComponent, AsyncPipe]
+  templateUrl: './movie.component.html',
+  imports: [
+    LoadingScreenComponent,
+    HeaderComponent,
+    HeroComponent,
+    CardListComponent,
+    SuccessFavoriteDialogComponent,
+    AsyncPipe,
+  ],
 })
 export class MovieComponent implements OnInit {
   private viewModel = inject(MovieViewModel);

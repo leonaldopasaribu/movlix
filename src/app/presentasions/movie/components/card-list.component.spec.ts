@@ -19,14 +19,14 @@ describe('CardListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [LoadingScreenModule, HeaderModule, CardListComponent],
-    providers: [
+      imports: [LoadingScreenModule, HeaderModule, CardListComponent],
+      providers: [
         {
-            provide: Router,
-            useValue: routerSpy,
+          provide: Router,
+          useValue: routerSpy,
         },
-    ],
-}).compileComponents();
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

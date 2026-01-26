@@ -7,9 +7,9 @@ import { MOVIE_URL } from 'src/app/shared/const/route-url.const';
 import { CardComponent } from '../../../shared/components/card/card.component';
 
 @Component({
-    selector: 'app-card-list',
-    templateUrl: './card-list.component.html',
-    imports: [CardComponent]
+  selector: 'app-card-list',
+  templateUrl: './card-list.component.html',
+  imports: [CardComponent],
 })
 export class CardListComponent {
   private router = inject(Router);

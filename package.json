@@ -8,6 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
+    "format": "prettier --write \"src/**/*.{ts,html,scss,css,json}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,html,scss,css,json}\"",
     "release": "standard-version",
     "release:minor": "standard-version --release-as minor",
     "release:major": "standard-version --release-as major",

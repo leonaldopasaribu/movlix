@@ -5,20 +5,20 @@
   <div class="px-14 pb-10">
     <button
       aria-hidden="true"
-      class="mt-6 text-gray-400 flex items-center gap-3 cursor-pointer"
+      class="mt-6 flex cursor-pointer items-center gap-3 text-gray-400"
       id="BtnBack"
       (click)="onButtonBackClick()"
     >
       <img
         src="assets/icons/arrow-right.svg"
-        class="rotate-180 w-6 h-6"
+        class="h-6 w-6 rotate-180"
         alt="Back Icon"
         width="24"
         height="24"
       />
       <p>Back</p>
     </button>
-    <div class="relative w-full flex justify-center mt-10">
+    <div class="relative mt-10 flex w-full justify-center">
       <div class="w-[1200px]">
         <img
           [ngSrc]="
@@ -35,22 +35,22 @@
     </div>
     <div class="relative">
       <div
-        class="bg-[#20283E] w-full rounded-3xl p-6 absolute translate-y-[-50%] opacity-90 lg:w-96 lg:p-10 xl:mx-80"
+        class="absolute w-full translate-y-[-50%] rounded-3xl bg-[#20283E] p-6 opacity-90 lg:w-96 lg:p-10 xl:mx-80"
       >
-        <h2 class="text-white font-bold text-lg lg:text-4xl">
+        <h2 class="text-lg font-bold text-white lg:text-4xl">
           {{ (movie$ | async)?.title }}
         </h2>
       </div>
     </div>
     <div
-      class="mt-24 flex flex-col gap-8 my-0 mx-auto xl:flex-row lg:mt-32 xl:px-72"
+      class="mx-auto my-0 mt-24 flex flex-col gap-8 lg:mt-32 xl:flex-row xl:px-72"
     >
       <div>
         <img
           [ngSrc]="
             'https://image.tmdb.org/t/p/w342' + (movie$ | async)?.posterUrl
           "
-          class="rounded-2xl my-0 mx-auto"
+          class="mx-auto my-0 rounded-2xl"
           alt="Movie Poster"
           width="342"
           height="513"
@@ -58,15 +58,15 @@
         />
       </div>
       <div class="w-full">
-        <h2 class="text-2xl text-white uppercase font-bold">The Synopsis</h2>
-        <p class="text-gray-200 pt-3">
+        <h2 class="text-2xl font-bold text-white uppercase">The Synopsis</h2>
+        <p class="pt-3 text-gray-200">
           {{ (movie$ | async)?.overview }}
         </p>
         @if (movie$ | async; as movie) {
           @if (movie.trailerUrl) {
             <button
               (click)="onWatchTrailerClickFromMovie(movie)"
-              class="mt-4 cursor-pointer inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200"
+              class="mt-4 inline-flex cursor-pointer items-center gap-2 rounded-lg bg-red-600 px-6 py-3 font-semibold text-white transition-colors duration-200 hover:bg-red-700"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +85,7 @@
           }
         }
         <div
-          class="mt-6 rounded-lg p-2 text-[#FFAD49] text-sm flex gap-1 w-14 bg-black"
+          class="mt-6 flex w-14 gap-1 rounded-lg bg-black p-2 text-sm text-[#FFAD49]"
         >
           <img
             src="assets/icons/star.svg"

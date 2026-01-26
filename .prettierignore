@@ -1,0 +1,32 @@
+# Dependencies
+node_modules
+dist
+.angular
+
+# Build outputs
+coverage
+*.log
+
+# Version control
+.git
+
+# IDE
+.vscode
+.idea
+
+# Generated files
+CHANGELOG.md
+pnpm-lock.yaml
+package-lock.json
+
+# Assets that shouldn't be formatted
+*.svg
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.ico
+*.woff
+*.woff2
+*.ttf
+*.eot

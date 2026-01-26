@@ -29,14 +29,20 @@ describe('MovieComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [LoadingScreenModule, HeaderModule, MovieComponent, HeroComponent, CardListComponent],
-    providers: [
+      imports: [
+        LoadingScreenModule,
+        HeaderModule,
+        MovieComponent,
+        HeroComponent,
+        CardListComponent,
+      ],
+      providers: [
         {
-            provide: MovieViewModel,
-            useValue: movieViewModelSpy,
+          provide: MovieViewModel,
+          useValue: movieViewModelSpy,
         },
-    ],
-}).compileComponents();
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

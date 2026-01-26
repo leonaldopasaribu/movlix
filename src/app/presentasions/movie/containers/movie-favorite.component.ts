@@ -10,8 +10,13 @@ import { CardListComponent } from '../components/card-list.component';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
-    templateUrl: './movie-favorite.component.html',
-    imports: [LoadingScreenComponent, HeaderComponent, CardListComponent, AsyncPipe]
+  templateUrl: './movie-favorite.component.html',
+  imports: [
+    LoadingScreenComponent,
+    HeaderComponent,
+    CardListComponent,
+    AsyncPipe,
+  ],
 })
 export class MovieFavoriteComponent implements OnInit {
   private viewModel = inject(MovieFavoriteViewModel);
