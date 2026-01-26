@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, map } from 'rxjs';
 
 import { MovieMapperTmdb } from './movie.mapper.tmdb';
@@ -17,13 +17,16 @@ import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class MovieRepositoryTmdb extends MovieRepository {
+  private http = inject(HttpClient);
+  private mapper = inject(MovieMapperTmdb);
+
   private readonly baseUrl: string;
   private readonly apiVersion: number;
 
-  constructor(
-    private http: HttpClient,
-    private mapper: MovieMapperTmdb,
-  ) {
+  /** Inserted by Angular inject() migration for backwards compatibility */
+  constructor(...args: unknown[]);
+
+  constructor() {
     super();
 
     this.baseUrl = environment.tmdbApiUrl;

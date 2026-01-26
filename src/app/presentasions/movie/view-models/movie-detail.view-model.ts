@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Location } from '@angular/common';
 import { distinctUntilChanged, map, Observable } from 'rxjs';
@@ -11,11 +11,14 @@ import { MovieEntity } from 'src/app/core/entities/movie.entity';
 
 @Injectable()
 export class MovieDetailViewModel {
-  constructor(
-    private store: MovieDetailStore,
-    private movieRepository: MovieRepository,
-    private location: Location,
-  ) {}
+  private store = inject(MovieDetailStore);
+  private movieRepository = inject(MovieRepository);
+  private location = inject(Location);
+
+  /** Inserted by Angular inject() migration for backwards compatibility */
+  constructor(...args: unknown[]);
+
+  constructor() {}
 
   get isLoading$(): Observable<boolean> {
     return this.store.state$.pipe(map(state => state.isLoading));

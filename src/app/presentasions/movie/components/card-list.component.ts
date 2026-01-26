@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
@@ -11,6 +11,8 @@ import { MOVIE_URL } from 'src/app/shared/const/route-url.const';
     standalone: false
 })
 export class CardListComponent {
+  private router = inject(Router);
+
   @Input()
   contents: MovieEntity[];
 
@@ -20,7 +22,10 @@ export class CardListComponent {
   @Output()
   favoriteClicked: EventEmitter<MovieEntity>;
 
-  constructor(private router: Router) {
+  /** Inserted by Angular inject() migration for backwards compatibility */
+  constructor(...args: unknown[]);
+
+  constructor() {
     this.contents = [];
     this.hasIconLove = false;
 

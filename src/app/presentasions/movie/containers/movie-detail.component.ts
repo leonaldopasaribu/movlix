@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -12,14 +12,17 @@ import { MovieEntity } from 'src/app/core/entities/movie.entity';
     standalone: false
 })
 export class MovieDetailComponent implements OnInit {
+  private viewModel = inject(MovieDetailViewModel);
+  private activatedRoute = inject(ActivatedRoute);
+
   isLoading$: Observable<boolean>;
 
   movie$: Observable<MovieEntity>;
 
-  constructor(
-    private viewModel: MovieDetailViewModel,
-    private activatedRoute: ActivatedRoute,
-  ) {
+  /** Inserted by Angular inject() migration for backwards compatibility */
+  constructor(...args: unknown[]);
+
+  constructor() {
     this.isLoading$ = this.viewModel.isLoading$;
 
     this.movie$ = this.viewModel.movie$;

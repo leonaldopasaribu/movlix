@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { MovieViewModel } from '../view-models/movie.view-model';
@@ -10,6 +10,8 @@ import { MovieEntity } from 'src/app/core/entities/movie.entity';
     standalone: false
 })
 export class MovieComponent implements OnInit {
+  private viewModel = inject(MovieViewModel);
+
   isLoading$: Observable<boolean>;
   isShowSuccessFavoriteDialog$: Observable<boolean>;
 
@@ -18,7 +20,10 @@ export class MovieComponent implements OnInit {
   topRatedMovies$: Observable<MovieEntity[]>;
   upComingMovies$: Observable<MovieEntity[]>;
 
-  constructor(private viewModel: MovieViewModel) {
+  /** Inserted by Angular inject() migration for backwards compatibility */
+  constructor(...args: unknown[]);
+
+  constructor() {
     this.isLoading$ = this.viewModel.isLoading$;
     this.isShowSuccessFavoriteDialog$ =
       this.viewModel.isShowSuccessFavoriteDialog$;

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { forkJoin, map, Observable } from 'rxjs';
@@ -17,12 +17,15 @@ import { LOCAL_STORAGE_FAVORITE_MOVIES_KEY } from 'src/app/shared/const/local-st
 
 @Injectable()
 export class MovieViewModel {
-  constructor(
-    private store: MovieStore,
-    private movieRepository: MovieRepository,
-    private router: Router,
-    private localStorageService: LocalStorageService,
-  ) {}
+  private store = inject(MovieStore);
+  private movieRepository = inject(MovieRepository);
+  private router = inject(Router);
+  private localStorageService = inject(LocalStorageService);
+
+  /** Inserted by Angular inject() migration for backwards compatibility */
+  constructor(...args: unknown[]);
+
+  constructor() {}
 
   get isLoading$(): Observable<boolean> {
     return this.store.state$.pipe(map(state => state.isLoading));
