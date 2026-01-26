@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/leonaldopasaribu/movlix/compare/v1.1.0...v1.2.0) (2026-01-26)
+
+
+### Features
+
+* add server-side rendering support and SEO enhancements ([d54e7c3](https://github.com/leonaldopasaribu/movlix/commit/d54e7c39e313bbc960d1e5094d1d4cfef33416ab))
+
 ## [1.1.0](https://github.com/leonaldopasaribu/movlix/compare/v1.0.1...v1.1.0) (2026-01-26)
 
 
