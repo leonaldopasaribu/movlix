@@ -11,8 +11,8 @@ describe('CardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [CardComponent],
-}).compileComponents();
+      imports: [CardComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -46,7 +46,8 @@ describe('CardComponent', () => {
 
     const containerCard = debugElement.query(By.css('#CntrFavoriteIcon'));
 
-    containerCard.triggerEventHandler('click', null);
+    const mockEvent = { stopPropagation: jasmine.createSpy('stopPropagation') };
+    containerCard.triggerEventHandler('click', mockEvent);
 
     expect(component.favoriteClicked.emit).toHaveBeenCalled();
   });
