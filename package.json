@@ -1,13 +1,18 @@
 {
   "name": "movlix",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "release": "standard-version",
+    "release:minor": "standard-version --release-as minor",
+    "release:major": "standard-version --release-as major",
+    "release:patch": "standard-version --release-as patch",
+    "release:first": "standard-version --first-release"
   },
   "private": true,
   "dependencies": {
@@ -46,6 +51,7 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "prettier": "^3.0.2",
     "prettier-plugin-tailwindcss": "^0.7.2",
+    "standard-version": "^9.5.0",
     "tailwindcss": "^4.1.18",
     "typescript": "~5.9.3"
   }
