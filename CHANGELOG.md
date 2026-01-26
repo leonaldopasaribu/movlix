@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/leonaldopasaribu/movlix/compare/v0.0.3...v1.0.0) (2026-01-26)
+
+
+### Features
+
+* add watch trailer feature ([30549d7](https://github.com/leonaldopasaribu/movlix/commit/30549d779b99be2b31f37da5125582f7d488dc29))
+
 ### [0.0.3](https://github.com/leonaldopasaribu/movlix/compare/v0.0.2...v0.0.3) (2026-01-26)
 
 
