@@ -25,7 +25,7 @@ export class SeoService {
     title: 'Movlix - Discover Movies & TV Shows',
     description:
       'Discover the latest movies and TV shows. Browse trending, popular, top rated, and upcoming movies. Watch trailers and manage your favorites.',
-    image: `${environment.pageUrl}/assets/images/backdrop.png`,
+    image: `${environment.pageUrl}/assets/images/og.png`,
     url: environment.pageUrl,
     keywords:
       'movies, tv shows, cinema, entertainment, trailers, movie database, watch movies, movie reviews',
