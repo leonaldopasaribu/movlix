@@ -1,18 +1,17 @@
+import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 import { of } from 'rxjs';
 
+import { CardListComponent } from '../components/card-list.component';
+import { HeroComponent } from '../components/hero.component';
+import { MovieViewModel } from '../view-models/movie.view-model';
 import { MovieComponent } from './movie.component';
 
-import { HeroComponent } from '../components/hero.component';
-import { CardListComponent } from '../components/card-list.component';
-import { MovieViewModel } from '../view-models/movie.view-model';
-
-import { LoadingScreenModule } from 'src/app/shared/components/loading-screen';
-import { HeaderModule } from 'src/app/shared/components/header';
-
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
+
+import { HeaderModule } from 'src/app/shared/components/header';
+import { LoadingScreenModule } from 'src/app/shared/components/loading-screen';
 
 describe('MovieComponent', () => {
   let component: MovieComponent;

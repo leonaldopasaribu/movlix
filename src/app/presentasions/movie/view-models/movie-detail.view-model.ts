@@ -1,13 +1,12 @@
-import { Injectable, inject } from '@angular/core';
-import { HttpErrorResponse } from '@angular/common/http';
 import { Location } from '@angular/common';
-import { distinctUntilChanged, map, Observable, forkJoin } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
+import { distinctUntilChanged, forkJoin, map, Observable } from 'rxjs';
 
 import { MovieDetailStore } from '../stores/movie-detail.store';
 
-import { MovieRepository } from 'src/app/core/repositories/movie.repositories';
-
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
+import { MovieRepository } from 'src/app/core/repositories/movie.repositories';
 
 @Injectable()
 export class MovieDetailViewModel {

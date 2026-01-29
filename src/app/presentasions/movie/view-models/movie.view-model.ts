@@ -1,19 +1,18 @@
-import { Injectable, inject } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { forkJoin, map, Observable } from 'rxjs';
 
-import { MovieStore } from '../stores/movie.store';
 import { Movie } from '../models/movie.model';
+import { MovieStore } from '../stores/movie.store';
 
-import { MovieRepository } from 'src/app/core/repositories/movie.repositories';
 import { MovieType } from 'src/app/core/entities/movie-type.enum';
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
+import { MovieRepository } from 'src/app/core/repositories/movie.repositories';
 
-import { MOVIE_URL } from 'src/app/shared/const/route-url.const';
-
-import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
 import { LOCAL_STORAGE_FAVORITE_MOVIES_KEY } from 'src/app/shared/const/local-storage-key.const';
+import { MOVIE_URL } from 'src/app/shared/const/route-url.const';
+import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
 
 @Injectable()
 export class MovieViewModel {

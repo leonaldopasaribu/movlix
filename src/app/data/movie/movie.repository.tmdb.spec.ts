@@ -1,23 +1,21 @@
 import {
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
+import {
   HttpTestingController,
   provideHttpClientTesting,
 } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-
-import { MovieRepositoryTmdb } from './movie.repository.tmdb';
-import { MovieMapperTmdb } from './movie.mapper.tmdb';
-import { MovieDtoTmdb } from './movie.dto.tmdb';
+import { environment } from 'src/environments/environment';
 
 import { FetchResponse } from '../base/response.model';
+import { MovieDtoTmdb } from './movie.dto.tmdb';
+import { MovieMapperTmdb } from './movie.mapper.tmdb';
+import { MovieRepositoryTmdb } from './movie.repository.tmdb';
 
-import { MovieEntity } from 'src/app/core/entities/movie.entity';
 import { MovieType } from 'src/app/core/entities/movie-type.enum';
-
-import { environment } from 'src/environments/environment';
-import {
-  provideHttpClient,
-  withInterceptorsFromDi,
-} from '@angular/common/http';
+import { MovieEntity } from 'src/app/core/entities/movie.entity';
 
 describe('MovieRepositoryTmdb', () => {
   let httpTestingController: HttpTestingController;

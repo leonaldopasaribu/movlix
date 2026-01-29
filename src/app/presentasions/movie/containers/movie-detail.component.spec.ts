@@ -1,15 +1,14 @@
+import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
-import { MovieDetailComponent } from './movie-detail.component';
 
 import { CardListComponent } from '../components/card-list.component';
 import { MovieDetailViewModel } from '../view-models/movie-detail.view-model';
+import { MovieDetailComponent } from './movie-detail.component';
 
-import { LoadingScreenModule } from 'src/app/shared/components/loading-screen';
 import { HeaderModule } from 'src/app/shared/components/header';
+import { LoadingScreenModule } from 'src/app/shared/components/loading-screen';
 
 describe('MovieDetailComponent', () => {
   let component: MovieDetailComponent;

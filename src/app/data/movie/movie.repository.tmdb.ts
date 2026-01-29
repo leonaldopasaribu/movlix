@@ -1,20 +1,18 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
-import { Observable, map } from 'rxjs';
-
-import { MovieMapperTmdb } from './movie.mapper.tmdb';
-import { MovieDtoTmdb } from './movie.dto.tmdb';
-import { MovieVideoDtoTmdb } from './movie-video.dto.tmdb';
+import { inject, Injectable } from '@angular/core';
+import { map, Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 import { FetchResponse } from '../base/response.model';
+import { MovieVideoDtoTmdb } from './movie-video.dto.tmdb';
+import { MovieDtoTmdb } from './movie.dto.tmdb';
+import { MovieMapperTmdb } from './movie.mapper.tmdb';
 
-import { MovieRepository } from 'src/app/core/repositories/movie.repositories';
-import { MovieEntity } from 'src/app/core/entities/movie.entity';
 import { MovieType } from 'src/app/core/entities/movie-type.enum';
+import { MovieEntity } from 'src/app/core/entities/movie.entity';
+import { MovieRepository } from 'src/app/core/repositories/movie.repositories';
 
 import { AUTHORIZATION_HEADER } from 'src/app/shared/const/authorization.const';
-
-import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class MovieRepositoryTmdb extends MovieRepository {

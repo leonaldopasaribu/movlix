@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { MovieState } from '../states/movie.state';
 import { Movie } from '../models/movie.model';
+import { MovieState } from '../states/movie.state';
 
 import { Store } from 'src/app/shared/base/store';
 

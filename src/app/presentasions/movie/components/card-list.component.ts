@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
+
+import { CardComponent } from '../../../shared/components/card/card.component';
 
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
 
 import { MOVIE_URL } from 'src/app/shared/const/route-url.const';
-import { CardComponent } from '../../../shared/components/card/card.component';
 
 @Component({
   selector: 'app-card-list',

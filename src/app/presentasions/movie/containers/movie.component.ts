@@ -1,17 +1,17 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
+import { environment } from '../../../../environments/environment';
+import { HeaderComponent } from '../../../shared/components/header/header.component';
+import { LoadingScreenComponent } from '../../../shared/components/loading-screen/loading-screen.component';
+import { SeoService } from '../../../shared/services/seo/seo.service';
+import { CardListComponent } from '../components/card-list.component';
+import { HeroComponent } from '../components/hero.component';
+import { SuccessFavoriteDialogComponent } from '../components/success-favorite-dialog.component';
 import { MovieViewModel } from '../view-models/movie.view-model';
 
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
-import { LoadingScreenComponent } from '../../../shared/components/loading-screen/loading-screen.component';
-import { HeaderComponent } from '../../../shared/components/header/header.component';
-import { HeroComponent } from '../components/hero.component';
-import { CardListComponent } from '../components/card-list.component';
-import { SuccessFavoriteDialogComponent } from '../components/success-favorite-dialog.component';
-import { AsyncPipe } from '@angular/common';
-import { SeoService } from '../../../shared/services/seo/seo.service';
-import { environment } from '../../../../environments/environment';
 
 @Component({
   templateUrl: './movie.component.html',

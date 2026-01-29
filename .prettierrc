@@ -6,9 +6,24 @@
   "singleQuote": true,
   "trailingComma": "all",
   "bracketSpacing": true,
-  "jsxBracketSameLine": false,
   "arrowParens": "avoid",
   "endOfLine": "lf",
   "htmlWhitespaceSensitivity": "ignore",
-  "plugins": ["prettier-plugin-tailwindcss"]
+  "plugins": [
+    "@ianvs/prettier-plugin-sort-imports",
+    "prettier-plugin-tailwindcss"
+  ],
+  "importOrder": [
+    "^@angular/(.*)$",
+    "^rxjs(/.*)?$",
+    "<THIRD_PARTY_MODULES>",
+    "",
+    "^[.]{1,2}/.*$",
+    "",
+    "^src/app/core/(.*)$",
+    "",
+    "^src/app/shared/(.*)$"
+  ],
+  "importOrderParserPlugins": ["typescript", "decorators-legacy"],
+  "importOrderTypeScriptVersion": "5.0.0"
 }

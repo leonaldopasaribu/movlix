@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 
 import { MovieDetailState } from '../states/movie-detail.state';
 
-import { Store } from 'src/app/shared/base/store';
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
+
+import { Store } from 'src/app/shared/base/store';
 
 @Injectable()
 export class MovieDetailStore extends Store<MovieDetailState> {

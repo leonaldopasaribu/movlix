@@ -1,12 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MovieFavoriteComponent } from './movie-favorite.component';
-
 import { CardListComponent } from '../components/card-list.component';
 import { MovieFavoriteViewModel } from '../view-models/movie-favorite.view-model';
+import { MovieFavoriteComponent } from './movie-favorite.component';
 
-import { HeaderModule } from 'src/app/shared/components/header/header.module';
 import { DialogModule } from 'src/app/shared/components/dialog/dialog.module';
+import { HeaderModule } from 'src/app/shared/components/header/header.module';
 
 describe('MovieFavoriteComponent', () => {
   let component: MovieFavoriteComponent;

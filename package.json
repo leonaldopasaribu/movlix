@@ -51,6 +51,7 @@
     "@angular/build": "^21.1.1",
     "@angular/cli": "~21.1.1",
     "@angular/compiler-cli": "^21.1.1",
+    "@ianvs/prettier-plugin-sort-imports": "^4.7.0",
     "@tailwindcss/postcss": "^4.1.18",
     "@types/express": "^5.0.1",
     "@types/jasmine": "~5.1.0",

@@ -2,17 +2,15 @@ import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { of, throwError } from 'rxjs';
 
+import { Movie } from '../models/movie.model';
+import { MovieStore } from '../stores/movie.store';
 import { MovieViewModel } from './movie.view-model';
 
-import { MovieStore } from '../stores/movie.store';
-import { Movie } from '../models/movie.model';
-
-import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
-
-import { MovieRepository } from 'src/app/core/repositories/movie.repositories';
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
+import { MovieRepository } from 'src/app/core/repositories/movie.repositories';
 
 import { LOCAL_STORAGE_FAVORITE_MOVIES_KEY } from 'src/app/shared/const/local-storage-key.const';
+import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
 
 describe('MovieViewModel', () => {
   let viewModel: MovieViewModel;

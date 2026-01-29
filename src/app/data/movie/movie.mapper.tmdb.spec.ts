@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MovieMapperTmdb } from './movie.mapper.tmdb';
 import { MovieDtoTmdb } from './movie.dto.tmdb';
+import { MovieMapperTmdb } from './movie.mapper.tmdb';
 
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
 

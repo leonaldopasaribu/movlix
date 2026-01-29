@@ -1,13 +1,12 @@
-import { Injectable, inject } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { distinctUntilChanged, map, Observable } from 'rxjs';
 
 import { MovieFavoriteStore } from '../stores/movie-favorite.store';
 
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
 
-import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
-
 import { LOCAL_STORAGE_FAVORITE_MOVIES_KEY } from 'src/app/shared/const/local-storage-key.const';
+import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
 
 @Injectable()
 export class MovieFavoriteViewModel {

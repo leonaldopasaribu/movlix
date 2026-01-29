@@ -1,8 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MovieFavoriteStore } from './movie-favorite.store';
-
 import { MovieFavoriteState } from '../states/movie-favorite.state';
+import { MovieFavoriteStore } from './movie-favorite.store';
 
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
 

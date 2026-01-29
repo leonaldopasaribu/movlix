@@ -1,21 +1,21 @@
-import { Component, OnInit, inject, OnDestroy } from '@angular/core';
+import { AsyncPipe, DecimalPipe, NgOptimizedImage } from '@angular/common';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject, takeUntil } from 'rxjs';
-import { MatDialog } from '@angular/material/dialog';
 
-import { MovieDetailViewModel } from '../view-models/movie-detail.view-model';
-import { MOVIE_ID_QUERY_PARAM_NAME } from '../const/movie-detail.const';
+import { environment } from '../../../../environments/environment';
+import { HeaderComponent } from '../../../shared/components/header/header.component';
+import { LoadingScreenComponent } from '../../../shared/components/loading-screen/loading-screen.component';
+import { SeoService } from '../../../shared/services/seo/seo.service';
 import {
   TrailerComponent,
   TrailerDialogData,
 } from '../components/trailer.component';
+import { MOVIE_ID_QUERY_PARAM_NAME } from '../const/movie-detail.const';
+import { MovieDetailViewModel } from '../view-models/movie-detail.view-model';
 
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
-import { LoadingScreenComponent } from '../../../shared/components/loading-screen/loading-screen.component';
-import { HeaderComponent } from '../../../shared/components/header/header.component';
-import { NgOptimizedImage, AsyncPipe, DecimalPipe } from '@angular/common';
-import { SeoService } from '../../../shared/services/seo/seo.service';
-import { environment } from '../../../../environments/environment';
 
 @Component({
   templateUrl: './movie-detail.component.html',

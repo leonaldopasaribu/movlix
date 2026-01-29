@@ -3,12 +3,11 @@ import { Router } from '@angular/router';
 
 import { CardListComponent } from '../components/card-list.component';
 
-import { LoadingScreenModule } from 'src/app/shared/components/loading-screen';
-import { HeaderModule } from 'src/app/shared/components/header';
-
-import { MOVIE_URL } from 'src/app/shared/const/route-url.const';
-
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
+
+import { HeaderModule } from 'src/app/shared/components/header';
+import { LoadingScreenModule } from 'src/app/shared/components/loading-screen';
+import { MOVIE_URL } from 'src/app/shared/const/route-url.const';
 
 describe('CardListComponent', () => {
   let component: CardListComponent;

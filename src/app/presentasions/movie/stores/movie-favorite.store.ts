@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 
 import { MovieFavoriteState } from '../states/movie-favorite.state';
 
-import { Store } from 'src/app/shared/base/store';
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
+
+import { Store } from 'src/app/shared/base/store';
 
 @Injectable()
 export class MovieFavoriteStore extends Store<MovieFavoriteState> {

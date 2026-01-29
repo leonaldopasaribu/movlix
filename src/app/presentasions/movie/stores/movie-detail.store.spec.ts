@@ -1,8 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MovieDetailStore } from './movie-detail.store';
-
 import { MovieDetailState } from '../states/movie-detail.state';
+import { MovieDetailStore } from './movie-detail.store';
 
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
 

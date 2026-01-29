@@ -1,6 +1,7 @@
-import { Injectable, inject, PLATFORM_ID } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
 import { isPlatformBrowser } from '@angular/common';
+import { inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
+
 import { environment } from '../../../../environments/environment';
 
 export interface SeoConfig {
