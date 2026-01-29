@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/leonaldopasaribu/movlix/compare/v1.2.0...v1.3.0) (2026-01-29)
+
+
+### Features
+
+* enhance SEO with Open Graph and Twitter meta tags ([89fe65f](https://github.com/leonaldopasaribu/movlix/commit/89fe65fb739e0ec4c19bcf0b9d325e6a8bd587e2))
+* update Open Graph and Twitter image meta tags to use new og.png ([b53a4b8](https://github.com/leonaldopasaribu/movlix/commit/b53a4b840a5b66a080cdf83886bfc134bea84e81))
+
 ## [1.2.0](https://github.com/leonaldopasaribu/movlix/compare/v1.1.0...v1.2.0) (2026-01-26)
 
 
