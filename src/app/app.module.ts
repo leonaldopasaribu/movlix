@@ -1,5 +1,6 @@
 import {
   provideHttpClient,
+  withFetch,
   withInterceptorsFromDi,
 } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -17,7 +18,7 @@ import { AppComponent } from './app.component';
   bootstrap: [AppComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [
-    provideHttpClient(withInterceptorsFromDi()),
+    provideHttpClient(withInterceptorsFromDi(), withFetch()),
     provideClientHydration(withEventReplay()),
   ],
 })
