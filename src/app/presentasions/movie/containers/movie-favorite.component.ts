@@ -46,6 +46,10 @@ export class MovieFavoriteComponent implements OnInit {
     return index;
   }
 
+  onRemoveFromFavorite(movie: MovieEntity): void {
+    this.viewModel.removeFavoriteMovie(movie);
+  }
+
   private setupSeo(): void {
     const favoriteUrl = `${environment.pageUrl}/movie/favorite`;
 

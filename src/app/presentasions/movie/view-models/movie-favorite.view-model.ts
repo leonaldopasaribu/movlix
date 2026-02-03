@@ -37,6 +37,21 @@ export class MovieFavoriteViewModel {
     this.store.saveFavoriteMovies(favoriteMovies);
   }
 
+  removeFavoriteMovie(movie: MovieEntity): void {
+    const favoriteMovies = this.getFavoriteMoviesFromLocalStorage() || [];
+
+    const updatedFavorites = favoriteMovies.filter(
+      favMovie => favMovie.id !== movie.id,
+    );
+
+    this.localStorageService.setItem(
+      LOCAL_STORAGE_FAVORITE_MOVIES_KEY,
+      updatedFavorites,
+    );
+
+    this.store.saveFavoriteMovies(updatedFavorites);
+  }
+
   private activateLoading(): void {
     this.store.markAsLoading();
   }
