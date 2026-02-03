@@ -2,10 +2,13 @@ import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 
 import { CardListComponent } from '../components/card-list.component';
 import { MovieDetailViewModel } from '../view-models/movie-detail.view-model';
 import { MovieDetailComponent } from './movie-detail.component';
+
+import { MovieEntity } from 'src/app/core/entities/movie.entity';
 
 import { HeaderModule } from 'src/app/shared/components/header';
 import { LoadingScreenModule } from 'src/app/shared/components/loading-screen';
@@ -16,10 +19,28 @@ describe('MovieDetailComponent', () => {
   let debugElement: DebugElement;
   let viewModel: MovieDetailViewModel;
 
-  const movieDetailViewModelSpy = jasmine.createSpyObj('MovieDetailViewModel', [
-    'fetchMovieDetails',
-    'onClickBackToPreviousPage',
-  ]);
+  const mockMovie: MovieEntity = {
+    id: 1,
+    title: 'Test Movie',
+    overview: 'Test Overview',
+    posterUrl: '/test.jpg',
+    backdropUrl: '/backdrop.jpg',
+    releaseDate: '2024-01-01',
+    rating: 8.5,
+    duration: 120,
+    genre: [],
+    trailerUrl: null,
+    isAdult: false,
+  };
+
+  const movieDetailViewModelSpy = jasmine.createSpyObj(
+    'MovieDetailViewModel',
+    ['fetchMovieDetails', 'onClickBackToPreviousPage'],
+    {
+      isLoading$: of(false),
+      movie$: of(mockMovie),
+    },
+  );
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
