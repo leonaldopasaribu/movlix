@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/leonaldopasaribu/movlix/compare/v1.3.0...v1.4.0) (2026-02-03)
+
+
+### Features
+
+* implement favorite movie removal functionality and enhance empty state display ([4a49a43](https://github.com/leonaldopasaribu/movlix/commit/4a49a439baad903cb9cad477cf27213141ba5edd))
+
+
+### Code Refactoring
+
+* update HTTP client configuration and simplify bootstrap process ([8a43639](https://github.com/leonaldopasaribu/movlix/commit/8a4363928c7caa8cdd51dabbe39c8b95da122ad4))
+
+
+### Tests
+
+* add mock movie entity and improve movie detail view model tests ([eab6fdf](https://github.com/leonaldopasaribu/movlix/commit/eab6fdf1985dd93cccbcfad8918859f65887c1a2))
+
 ## [1.3.0](https://github.com/leonaldopasaribu/movlix/compare/v1.2.0...v1.3.0) (2026-01-29)
 
 
