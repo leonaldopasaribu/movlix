@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/leonaldopasaribu/movlix/compare/v1.4.0...v1.4.1) (2026-02-06)
+
+
+### Code Refactoring
+
+* rename presentasions folder to presentations ([dc5383c](https://github.com/leonaldopasaribu/movlix/commit/dc5383c392e82951e4370f94c688bf9d8db23a0f))
+
 ## [1.4.0](https://github.com/leonaldopasaribu/movlix/compare/v1.3.0...v1.4.0) (2026-02-03)
 
 
