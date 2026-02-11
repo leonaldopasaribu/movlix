@@ -38,14 +38,6 @@ describe('CardListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should return 1 when trackByIndex is called with argument 1', () => {
-    const stubArgument = 1;
-
-    const result = component.trackByIndex(1);
-
-    expect(result).toEqual(stubArgument);
-  });
-
   it('should emit favoriteClicked event when onFavoriteIconClick with movie stub is called', () => {
     const movieStub: MovieEntity = {
       backdropUrl: 'Test Backdrop Url',

@@ -7,8 +7,8 @@
     (click)="onCardClick()"
   >
     <img
-      [ngSrc]="'https://image.tmdb.org/t/p/w342' + imageUrl"
-      alt="{{ title }}"
+      [ngSrc]="'https://image.tmdb.org/t/p/w342' + imageUrl()"
+      alt="{{ title() }}"
       fill
       class="object-cover transition-transform duration-500 group-hover:scale-110"
     />
@@ -17,21 +17,21 @@
       class="absolute inset-0 bg-gradient-to-t from-[#161d2f] via-transparent to-transparent opacity-80"
     ></div>
 
-    @if (hasRating) {
+    @if (hasRating()) {
       <div
         class="absolute top-3 left-3 flex items-center gap-1.5 rounded-lg border border-white/10 bg-black/40 px-2 py-1.5 shadow-lg backdrop-blur-md"
       >
         <img src="assets/icons/star.svg" alt="Star" class="h-3.5 w-3.5" />
         <span class="text-xs leading-none font-bold text-[#FFAD49]">
-          {{ rating | number: '1.0-1' }}
+          {{ rating() | number: '1.0-1' }}
         </span>
       </div>
     }
 
-    @if (hasFavorite) {
+    @if (hasFavorite()) {
       <button
         id="CntrFavoriteIcon"
-        (click)="onFavoriteIconClick(); $event.stopPropagation()"
+        (click)="onFavoriteIconClick($event)"
         class="absolute top-3 right-3 cursor-pointer rounded-full border border-white/10 bg-white/10 p-2 text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:border-red-500 hover:bg-red-500 active:scale-90"
       >
         <img src="assets/icons/love.svg" class="h-4 w-4" alt="Favorite" />
@@ -43,7 +43,7 @@
     <h3
       class="line-clamp-2 min-h-[2.5rem] text-base leading-tight font-bold text-white transition-colors group-hover:text-blue-400"
     >
-      {{ title }}
+      {{ title() }}
     </h3>
 
     <div

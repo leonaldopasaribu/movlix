@@ -40,7 +40,7 @@ describe('CardComponent', () => {
   it('should emit favoriteClicked event when icon favorite is clicked', () => {
     spyOn(component.favoriteClicked, 'emit');
 
-    component.hasFavorite = true;
+    fixture.componentRef.setInput('hasFavorite', true);
 
     fixture.detectChanges();
 

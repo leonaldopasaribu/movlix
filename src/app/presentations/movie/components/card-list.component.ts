@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { CardComponent } from '../../../shared/components/card/card.component';
@@ -13,40 +13,18 @@ import { MOVIE_URL } from 'src/app/shared/const/route-url.const';
   imports: [CardComponent],
 })
 export class CardListComponent {
-  private router = inject(Router);
+  private readonly router = inject(Router);
 
-  @Input()
-  contents: MovieEntity[];
+  contents = input<MovieEntity[]>([]);
+  hasIconLove = input(false);
 
-  @Input()
-  hasIconLove: boolean;
-
-  @Output()
-  favoriteClicked: EventEmitter<MovieEntity>;
-
-  /** Inserted by Angular inject() migration for backwards compatibility */
-  constructor(...args: unknown[]);
-
-  constructor() {
-    this.contents = [];
-    this.hasIconLove = false;
-
-    this.favoriteClicked = new EventEmitter();
-  }
-
-  trackByIndex(index: number): number {
-    return index;
-  }
+  favoriteClicked = output<MovieEntity>();
 
   onCardClick(movieId: number): void {
-    this.redirectToMovieDetails(movieId);
+    this.router.navigateByUrl(`${MOVIE_URL}/${movieId}`);
   }
 
   onFavoriteIconClick(movie: MovieEntity): void {
     this.favoriteClicked.emit(movie);
-  }
-
-  private redirectToMovieDetails(movieId: number): void {
-    this.router.navigateByUrl(`${MOVIE_URL}/${movieId.toString()}`);
   }
 }
