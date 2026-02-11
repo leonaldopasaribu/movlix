@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/leonaldopasaribu/movlix/compare/v1.4.2...v1.5.0) (2026-02-11)
+
+
+### Features
+
+* add movie tab component ([78eef10](https://github.com/leonaldopasaribu/movlix/commit/78eef103d7d0911fbfa3c87e0a5fd04cc9c8ff86))
+
+
+### Tests
+
+* adjust unit test success favorite dialog and movie ([e25ff71](https://github.com/leonaldopasaribu/movlix/commit/e25ff71f1947ca610656b4d8863e8acc8af87ecd))
+
 ### [1.4.2](https://github.com/leonaldopasaribu/movlix/compare/v1.4.1...v1.4.2) (2026-02-11)
 
 
