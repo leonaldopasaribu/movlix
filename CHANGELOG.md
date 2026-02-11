@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.1](https://github.com/leonaldopasaribu/movlix/compare/v1.5.0...v1.5.1) (2026-02-11)
+
+
+### Code Refactoring
+
+* migrate @Input and @Output to input and output ([904ac08](https://github.com/leonaldopasaribu/movlix/commit/904ac08dc36eb276015978fbcd4ec5f4b6245387))
+
 ## [1.5.0](https://github.com/leonaldopasaribu/movlix/compare/v1.4.2...v1.5.0) (2026-02-11)
 
 
