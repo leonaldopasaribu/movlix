@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { DialogRef } from '@angular/cdk/dialog';
+import { Component, inject } from '@angular/core';
 
 import { DialogComponent } from '../../../shared/components/dialog/dialog.component';
 
@@ -8,14 +9,9 @@ import { DialogComponent } from '../../../shared/components/dialog/dialog.compon
   imports: [DialogComponent],
 })
 export class SuccessFavoriteDialogComponent {
-  @Output()
-  closeClicked: EventEmitter<void>;
-
-  constructor() {
-    this.closeClicked = new EventEmitter();
-  }
+  private dialogRef = inject(DialogRef);
 
   onCloseClick(): void {
-    this.closeClicked.emit();
+    this.dialogRef.close();
   }
 }

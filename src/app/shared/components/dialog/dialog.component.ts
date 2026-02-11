@@ -15,4 +15,8 @@ export class DialogComponent {
   onCloseClick(): void {
     this.closeClicked.emit();
   }
+
+  onBackdropClick(): void {
+    this.closeClicked.emit();
+  }
 }

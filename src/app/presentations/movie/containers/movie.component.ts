@@ -1,3 +1,4 @@
+import { Dialog } from '@angular/cdk/dialog';
 import { AsyncPipe } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -20,16 +21,15 @@ import { MovieEntity } from 'src/app/core/entities/movie.entity';
     HeaderComponent,
     HeroComponent,
     CardListComponent,
-    SuccessFavoriteDialogComponent,
     AsyncPipe,
   ],
 })
 export class MovieComponent implements OnInit {
   private viewModel = inject(MovieViewModel);
   private seoService = inject(SeoService);
+  private dialog = inject(Dialog);
 
   isLoading$: Observable<boolean>;
-  isShowSuccessFavoriteDialog$: Observable<boolean>;
 
   nowPlayingMovies$: Observable<MovieEntity[]>;
   popularMovies$: Observable<MovieEntity[]>;
@@ -41,8 +41,6 @@ export class MovieComponent implements OnInit {
 
   constructor() {
     this.isLoading$ = this.viewModel.isLoading$;
-    this.isShowSuccessFavoriteDialog$ =
-      this.viewModel.isShowSuccessFavoriteDialog$;
 
     this.nowPlayingMovies$ = this.viewModel.nowPlayingMovies$;
     this.popularMovies$ = this.viewModel.popularMovies$;
@@ -61,10 +59,16 @@ export class MovieComponent implements OnInit {
 
   onIconLoveClick(movie: MovieEntity): void {
     this.viewModel.addFavoriteMovie(movie);
+    this.openSuccessFavoriteDialog();
   }
 
-  onCloseSuccessFavoriteDialogClick(): void {
-    this.viewModel.onClickCloseSuccessFavoriteDialog();
+  private openSuccessFavoriteDialog(): void {
+    this.dialog.open(SuccessFavoriteDialogComponent, {
+      panelClass: 'custom-dialog-container',
+      hasBackdrop: true,
+      disableClose: false,
+      backdropClass: 'cdk-overlay-backdrop',
+    });
   }
 
   private loadInitialData(): void {
