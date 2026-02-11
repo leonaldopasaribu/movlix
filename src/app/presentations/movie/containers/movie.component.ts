@@ -1,5 +1,5 @@
 import { Dialog } from '@angular/cdk/dialog';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -14,6 +14,8 @@ import { MovieViewModel } from '../view-models/movie.view-model';
 
 import { MovieEntity } from 'src/app/core/entities/movie.entity';
 
+type TabType = 'nowPlaying' | 'popular' | 'topRated' | 'upComing';
+
 @Component({
   templateUrl: './movie.component.html',
   imports: [
@@ -22,6 +24,7 @@ import { MovieEntity } from 'src/app/core/entities/movie.entity';
     HeroComponent,
     CardListComponent,
     AsyncPipe,
+    NgClass,
   ],
 })
 export class MovieComponent implements OnInit {
@@ -36,8 +39,21 @@ export class MovieComponent implements OnInit {
   topRatedMovies$: Observable<MovieEntity[]>;
   upComingMovies$: Observable<MovieEntity[]>;
 
-  /** Inserted by Angular inject() migration for backwards compatibility */
-  constructor(...args: unknown[]);
+  activeTab: TabType = 'nowPlaying';
+
+  tabs = [
+    { id: 'nowPlaying' as TabType, label: 'Now Playing' },
+    { id: 'popular' as TabType, label: 'Popular' },
+    { id: 'topRated' as TabType, label: 'Top Rated' },
+    { id: 'upComing' as TabType, label: 'Up Coming' },
+  ];
+
+  private readonly movieMap: Record<TabType, Observable<MovieEntity[]>> = {
+    nowPlaying: this.viewModel.nowPlayingMovies$,
+    popular: this.viewModel.popularMovies$,
+    topRated: this.viewModel.topRatedMovies$,
+    upComing: this.viewModel.upComingMovies$,
+  };
 
   constructor() {
     this.isLoading$ = this.viewModel.isLoading$;
@@ -60,6 +76,19 @@ export class MovieComponent implements OnInit {
   onIconLoveClick(movie: MovieEntity): void {
     this.viewModel.addFavoriteMovie(movie);
     this.openSuccessFavoriteDialog();
+  }
+
+  onTabClick(tabId: TabType): void {
+    this.activeTab = tabId;
+  }
+
+  get currentMovies$(): Observable<MovieEntity[]> {
+    return this.movieMap[this.activeTab];
+  }
+
+  get currentTabLabel(): string {
+    const tab = this.tabs.find(t => t.id === this.activeTab);
+    return tab ? tab.label : 'Now Playing';
   }
 
   private openSuccessFavoriteDialog(): void {

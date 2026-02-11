@@ -5,45 +5,38 @@
   <div class="px-14 pb-14">
     <app-hero></app-hero>
     <div class="mt-20">
-      <div class="mb-8">
-        <h2 class="text-2xl font-bold text-gray-200 uppercase">Now Playing</h2>
-        <div class="mt-3">
-          <app-card-list
-            [contents]="(nowPlayingMovies$ | async)!"
-            [hasIconLove]="true"
-            (favoriteClicked)="onIconLoveClick($event)"
-          ></app-card-list>
-        </div>
+      <!-- Tabs Navigation -->
+      <div class="mb-10">
+        <nav
+          class="inline-flex rounded-2xl border border-gray-800 bg-gray-900/80 p-1 backdrop-blur-sm"
+          aria-label="Tabs"
+        >
+          @for (tab of tabs; track tab.id) {
+            <button
+              (click)="onTabClick(tab.id)"
+              [ngClass]="{
+                'bg-red-600 text-white shadow-lg shadow-red-900/40':
+                  activeTab === tab.id,
+                'text-gray-400 hover:text-gray-200': activeTab !== tab.id,
+              }"
+              class="cursor-pointer rounded-xl px-6 py-2.5 text-xs font-bold tracking-widest uppercase transition-all duration-300 ease-in-out outline-none"
+            >
+              {{ tab.label }}
+            </button>
+          }
+        </nav>
       </div>
+
+      <!-- Tab Content -->
       <div class="mb-8">
-        <h2 class="text-2xl font-bold text-gray-200 uppercase">Popular</h2>
-        <div class="mt-3">
-          <app-card-list
-            [contents]="(popularMovies$ | async)!"
-            [hasIconLove]="true"
-            (favoriteClicked)="onIconLoveClick($event)"
-          ></app-card-list>
-        </div>
-      </div>
-      <div class="mb-8">
-        <h2 class="text-2xl font-bold text-gray-200 uppercase">Top Rated</h2>
-        <div class="mt-3">
-          <app-card-list
-            [contents]="(topRatedMovies$ | async)!"
-            [hasIconLove]="true"
-            (favoriteClicked)="onIconLoveClick($event)"
-          ></app-card-list>
-        </div>
-      </div>
-      <div class="mb-8">
-        <h2 class="text-2xl font-bold text-gray-200 uppercase">Up Coming</h2>
-        <div class="mt-3">
-          <app-card-list
-            [contents]="(upComingMovies$ | async)!"
-            [hasIconLove]="true"
-            (favoriteClicked)="onIconLoveClick($event)"
-          ></app-card-list>
-        </div>
+        <h2 class="mb-6 text-2xl font-bold text-gray-200 uppercase">
+          {{ currentTabLabel }}
+        </h2>
+        <app-card-list
+          [contents]="(currentMovies$ | async)!"
+          [hasIconLove]="true"
+          (favoriteClicked)="onIconLoveClick($event)"
+        ></app-card-list>
       </div>
     </div>
   </div>
