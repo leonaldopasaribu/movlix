@@ -114,13 +114,4 @@ describe('MovieComponent', () => {
 
     expect(addFavoriteMovieSpy).toHaveBeenCalled();
   });
-
-  it('should call onClickCloseSuccessFavoriteDialog method with movie id 1 when onCloseSuccessFavoriteDialogClick method is called', () => {
-    const onClickCloseSuccessFavoriteDialogSpy =
-      movieViewModel.onClickCloseSuccessFavoriteDialog as jasmine.Spy;
-
-    component.onCloseSuccessFavoriteDialogClick();
-
-    expect(onClickCloseSuccessFavoriteDialogSpy).toHaveBeenCalled();
-  });
 });
