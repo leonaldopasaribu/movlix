@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.2](https://github.com/leonaldopasaribu/movlix/compare/v1.4.1...v1.4.2) (2026-02-11)
+
+
+### Code Refactoring
+
+* change success favorite dialog using cdk dialog ([52e03d6](https://github.com/leonaldopasaribu/movlix/commit/52e03d6c9b6cbeb1116916473469d0dc60e218cc))
+
 ### [1.4.1](https://github.com/leonaldopasaribu/movlix/compare/v1.4.0...v1.4.1) (2026-02-06)
 
 
