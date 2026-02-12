@@ -1,0 +1,180 @@
+{
+  "Create Abstract Repository": {
+    "prefix": "abstractrepo",
+    "body": [
+      "import { Observable } from \"rxjs\";",
+      "",
+      "export abstract class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g} {",
+      "  abstract create(entity: ${1:Entity}): Observable<void>;",
+      "  abstract fetchAll(): Observable<${1:Entity}[]>;",
+      "  abstract fetchOne(id: ${2:idType}): Observable<${1:Entity}>;",
+      "  abstract update(entity: ${1:Entity}): Observable<void>;",
+      "  abstract remove(id: ${2:idType}): Observable<void>;",
+      "}",
+      ""
+    ],
+    "description": "Create Abstract Repository"
+  },
+  "Create Entity": {
+    "prefix": "entity",
+    "body": [
+      "export interface ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g} {",
+      "  id: ${2:idType};",
+      "  someProp: string;",
+      "}"
+    ],
+    "description": "Create Entity"
+  },
+  "Create Dto": {
+    "prefix": "dto",
+    "body": [
+      "export interface ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g} {",
+      "  id: ${2:idType};",
+      "  some_prop: string;",
+      "}"
+    ],
+    "description": "Create Dto"
+  },
+  "Create Mapper Concretion": {
+    "prefix": "mapper",
+    "body": [
+      "import { Injectable } from '@angular/core';",
+      "",
+      "@Injectable()",
+      "export class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}",
+      "    implements",
+      "    DtoMapper<${1:Dto}, ${2:Entity}>,",
+      "    EntityMapper<${1:Dto}, ${2:Entity}>",
+      "{",
+      "  toDto(entity: ${2:Entity}): ${1:Dto} {",
+      "    return {",
+      "        id: entity.id,",
+      "        some_prop: entity.someProp,",
+      "    }",
+      "  }",
+      "",
+      "  toEntity(dto: ${1:Dto}): ${2:Entity} {",
+      "    return {",
+      "        id: dto.id,",
+      "        someProp: dto.some_prop,",
+      "    }",
+      "  }",
+      "}"
+    ],
+    "description": "Create Mapper Concretion"
+  },
+  "Create Repository Concretion": {
+    "prefix": "repository",
+    "body": [
+      "import { HttpClient } from '@angular/common/http';",
+      "import { Injectable } from '@angular/core';",
+      "import { Observable } from 'rxjs';",
+      "import { map } from 'rxjs/operators';",
+      "",
+      "@Injectable()",
+      "export class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g} extends ${2:AbstractRepository} {",
+      "  private readonly baseUrl: string;",
+      "",
+      "  constructor(private http: HttpClient, private mapper: ${3:Mapper}) {",
+      "    super();",
+      "    this.baseUrl = 'put your API url here';",
+      "  }",
+      "",
+      "  create(entity: ${4:Entity}): Observable<void> {",
+      "    const dto: ${5:Dto} = this.mapper.toDto(entity);",
+      "",
+      "    return this.http.post<void>(`${this.baseUrl}/api/example`, dto);",
+      "  }",
+      "",
+      "  fetchAll(): Observable<${4:Entity}[]> {",
+      "    return this.http",
+      "      .get<${5:Dto}[]>(`${this.baseUrl}/api/example`)",
+      "      .pipe(",
+      "        map((${6:dtos name}: ${5:Dto}[]) =>",
+      "          ${6:dtos name}.map((dto: ${5:Dto}) => this.mapper.toEntity(dto)),",
+      "        ),",
+      "      );",
+      "  }",
+      "",
+      "  fetchOne(id: ${7:IdType}): Observable<${4:Entity}> {",
+      "    return this.http",
+      "      .get<${5:Dto}>(`${this.baseUrl}/api/example/${id}`)",
+      "      .pipe(map((dto: ${5:Dto}) => this.mapper.toEntity(dto)));",
+      "  }",
+      "",
+      "  update(entity: ${4:Entity}): Observable<void> {",
+      "    const dto: ${5:Dto} = this.mapper.toDto(entity);",
+      "    return this.http.put<void>(`${this.baseUrl}/api/example`, dto);",
+      "  }",
+      "",
+      "  remove(id: ${7:IdType}): Observable<void> {",
+      "    return this.http.delete<void>(`${this.baseUrl}/api/example/${id}`);",
+      "  } ",
+      "}"
+    ],
+    "description": "Create Repository Concretion"
+  },
+  "Create State": {
+    "prefix": "state",
+    "body": [
+      "export class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g} {",
+      "  isLoading: boolean = false;",
+      "  error: string = '';",
+      "  someProperty: string;",
+      "}"
+    ],
+    "description": "Create State"
+  },
+  "Create Store": {
+    "prefix": "store",
+    "body": [
+      "import { Injectable } from '@angular/core';",
+      "",
+      "@Injectable()",
+      "export class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g} extends Store<${2:State}> {",
+      "  constructor() {",
+      "    super(new ${2:State}());",
+      "  }",
+      "",
+      "  markAsLoading(): void {",
+      "    this.setState({ isLoading: true });",
+      "  }",
+      "",
+      "  markAsError(error: string): void {",
+      "    this.setState({",
+      "      error",
+      "    });",
+      "  }",
+      "}",
+      ""
+    ],
+    "description": "Create Store"
+  },
+  "Create View Model": {
+    "prefix": "viewmodel",
+    "body": [
+      "import { Injectable } from '@angular/core';",
+      "import { Observable } from 'rxjs';",
+      "import { filter, map } from 'rxjs/operators';",
+      "",
+      "@Injectable()",
+      "export class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g} {",
+      "  constructor(",
+      "    private repository: ${2:Repository}, private store: ${3:Store},",
+      "  ) {}",
+      "",
+      "  get isLoading$(): Observable<${4:State}> {",
+      "    return this.store.state$.pipe(map((state: ${4:State}) => state.isLoading));",
+      "  }",
+      "",
+      "  get error$(): Observable<${4:State}> {",
+      "    return this.store.state$.pipe(",
+      "      filter((state: ${4:State}) => !!state.error),",
+      "      map((state: ${4:State}) => state.error),",
+      "    );",
+      "  }",
+      "}"
+    ],
+    "description": "Create View Model"
+  }
+}
