@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.3](https://github.com/leonaldopasaribu/movlix/compare/v1.5.2...v1.5.3) (2026-02-19)
+
+
+### Tests
+
+* add unit test for trailer component ([792277f](https://github.com/leonaldopasaribu/movlix/commit/792277f0a0de325866968a6d9bc2a38063e231b2))
+
 ### [1.5.2](https://github.com/leonaldopasaribu/movlix/compare/v1.5.1...v1.5.2) (2026-02-17)
 
 
