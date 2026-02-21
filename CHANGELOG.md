@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.4](https://github.com/leonaldopasaribu/movlix/compare/v1.5.3...v1.5.4) (2026-02-21)
+
+
+### Tests
+
+* add unit test for movie detail view model ([db26d75](https://github.com/leonaldopasaribu/movlix/commit/db26d759a78520ef8933c0bb3419c24240d4e8db))
+
 ### [1.5.3](https://github.com/leonaldopasaribu/movlix/compare/v1.5.2...v1.5.3) (2026-02-19)
 
 
